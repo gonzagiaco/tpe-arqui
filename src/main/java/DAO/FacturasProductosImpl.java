@@ -14,7 +14,7 @@ public class FacturasProductosImpl implements FacturasProductosDAO{
     private Connection con;
     private String csv;
 
-    FacturasProductosImpl() throws SQLException {
+    public FacturasProductosImpl() throws SQLException {
         this.csv = "src/main/java/csv/facturas-productos.csv";
         this.con = Conec.getConnection();
     }
