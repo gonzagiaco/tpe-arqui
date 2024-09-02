@@ -29,9 +29,9 @@ public class FacturasProductosImpl implements FacturasProductosDAO{
 
             for(CSVRecord row : records){
                 int idFactura = Integer.parseInt(row.get("idFactura"));
-                int idCliente = Integer.parseInt(row.get("idProducto"));
+                int idProducto = Integer.parseInt(row.get("idProducto"));
                 int cantidad = Integer.parseInt(row.get("cantidad"));
-                Factura_Producto fp = new Factura_Producto(idFactura, idCliente, cantidad);
+                Factura_Producto fp = new Factura_Producto(idFactura, idProducto, cantidad);
                 insertFacturaProducto(fp);
             }
         } catch (IOException e) {
@@ -56,7 +56,8 @@ public class FacturasProductosImpl implements FacturasProductosDAO{
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println("Error al insertar registro: Factura ID = " + idFactura + ", Producto ID = " + idProducto);
+            e.printStackTrace();
         }
     }
 }
