@@ -3,19 +3,15 @@ package models;
 public class Cliente {
 
     private int id;
-    public static int auto_id; //preguntar
     private String nombre;
     private String email;
 
-    public Cliente(String nombre, String email) {
-        this.id = getAuto_id();
+    public Cliente(int id, String nombre, String email) {
+        this.id = id;
         this.nombre = nombre;
         this.email = email;
     }
 
-    private static int getAuto_id() {
-        return auto_id++;
-    }
 
     public int getId() {
         return id;
@@ -35,5 +31,14 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
