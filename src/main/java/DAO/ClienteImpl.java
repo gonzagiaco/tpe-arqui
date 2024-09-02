@@ -1,8 +1,8 @@
 package DAO;
 
 import Database.Conec;
+import csv.CsvRecords;
 import models.Cliente;
-import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.*;
@@ -13,24 +13,21 @@ import java.sql.SQLException;
 import static java.lang.Integer.parseInt;
 
 public class ClienteImpl implements ClienteDAO {
-
-    Connection con;
-    String csv;
+    private Connection con;
+    private String csv;
 
     public ClienteImpl() throws SQLException {
         this.csv = "src/main/java/csv/clientes.csv";
-        con = Conec.getConnection();
+        this.con = Conec.getConnection();
     }
 
     @Override
     public void insertClientes() {
         try {
-        String[] HEADERS = {"idCliente", "nombre", "email"};
+            String[] HEADERS = {"idCliente", "nombre", "email"};
 
-            Reader in = new FileReader(this.csv);
-
-            CSVFormat csvFormat = CSVFormat.DEFAULT.builder().setHeader(HEADERS).setSkipHeaderRecord(true).build();
-            Iterable<CSVRecord> records = csvFormat.parse(in);
+            CsvRecords csvRecords = new CsvRecords();
+            Iterable<CSVRecord> records = csvRecords.getCsvRecords(HEADERS, this.csv);
 
             for(CSVRecord row: records) {
                 int id = parseInt(row.get("idCliente"));
@@ -45,7 +42,7 @@ public class ClienteImpl implements ClienteDAO {
         }
     }
     public void insertCliente(Cliente c){
-        String sql = "INSERT INTO cliente VALUES(?,?,?)";
+        String sql = "INSERT INTO cliente (id, nombre, email) VALUES(?,?,?)";
         int id = c.getId();
         String nombre = c.getNombre();
         String email = c.getEmail();

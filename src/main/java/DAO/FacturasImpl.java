@@ -1,35 +1,31 @@
 package DAO;
 
 import Database.Conec;
+import csv.CsvRecords;
 import models.Factura;
-import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class FacturasImpl implements FacturasDAO{
-    Connection con;
-    String csv;
+    private Connection con;
+    private String csv;
 
     public FacturasImpl() throws SQLException{
         this.csv = "src/main/java/csv/facturas.csv";
-        con = Conec.getConnection();
+        this.con = Conec.getConnection();
     }
-
 
     @Override
     public void insertFacturas() {
         try{
             String[] HEADERS = {"idFactura", "idCliente"};
-            Reader reader = new FileReader(this.csv);
 
-            CSVFormat csvFormat = CSVFormat.DEFAULT.builder().setHeader(HEADERS).setSkipHeaderRecord(true).build();
-            Iterable<CSVRecord> records = csvFormat.parse(reader);
+            CsvRecords csvRecords = new CsvRecords();
+            Iterable<CSVRecord> records = csvRecords.getCsvRecords(HEADERS, this.csv);
 
             for(CSVRecord row : records){
                 int idFactura = Integer.parseInt(row.get("idFactura"));
@@ -43,7 +39,7 @@ public class FacturasImpl implements FacturasDAO{
     }
 
     private void insertFactura(Factura f) {
-        String sql = "INSERT INTO facturas (idFactura,idCliente) VALUES (?,?)";
+        String sql = "INSERT INTO facturas (id, cliente_id) VALUES (?,?)";
         int id = f.getId();
         int clienteId = f.getId_cliente();
 
