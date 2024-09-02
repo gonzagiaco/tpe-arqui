@@ -15,7 +15,7 @@ public class FacturasImpl implements FacturasDAO{
     private String csv;
 
 
-    public FacturasImpl(){
+    public FacturasImpl() throws SQLException{
 
         this.csv = "src/main/java/csv/facturas.csv";
         this.con = Conec.getConnection();
@@ -41,7 +41,7 @@ public class FacturasImpl implements FacturasDAO{
     }
 
     public void insertFactura(Factura f) {
-        String sql = "INSERT INTO facturas (id, cliente_id) VALUES (?,?)";
+        String sql = "INSERT INTO factura (id, cliente_id) VALUES (?,?)";
         int id = f.getId();
         int clienteId = f.getId_cliente();
 
