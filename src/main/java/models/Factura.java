@@ -11,6 +11,11 @@ public class Factura {
         this.id_cliente = id_cliente;
     }
 
+    public Factura(int id_factura, int id_cliente) {
+        this.id = id_factura;
+        this.id_cliente = id_cliente;
+    }
+
     public int getId() {
         return id;
     }
