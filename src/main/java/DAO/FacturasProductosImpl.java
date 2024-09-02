@@ -32,7 +32,7 @@ public class FacturasProductosImpl implements FacturasProductosDAO{
                 int idCliente = Integer.parseInt(row.get("idProducto"));
                 int cantidad = Integer.parseInt(row.get("cantidad"));
                 Factura_Producto fp = new Factura_Producto(idFactura, idCliente, cantidad);
-                insertFacturasProducto(fp);
+                insertFacturaProducto(fp);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -41,7 +41,8 @@ public class FacturasProductosImpl implements FacturasProductosDAO{
 
     }
 
-    private void insertFacturasProducto(Factura_Producto fp) {
+    @Override
+    public void insertFacturaProducto(Factura_Producto fp) {
         String sql = "INSERT INTO factura_producto (factura_id, producto_id, cantidad) VALUES (?,?,?)";
         int idFactura = fp.getId_factura();
         int idProducto = fp.getId_producto();

@@ -41,6 +41,8 @@ public class ClienteImpl implements ClienteDAO {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
     public void insertCliente(Cliente c){
         String sql = "INSERT INTO cliente (id, nombre, email) VALUES(?,?,?)";
         int id = c.getId();

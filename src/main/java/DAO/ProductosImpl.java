@@ -33,7 +33,7 @@ public class ProductosImpl implements ProductosDAO {
                 String nombre = row.get("nombre");
                 float valor = Float.parseFloat(row.get("valor"));
                 Producto p = new Producto(id, nombre, valor);
-                insertProductos(p);
+                insertProducto(p);
             }
 
         } catch (IOException e) {
@@ -41,7 +41,8 @@ public class ProductosImpl implements ProductosDAO {
         }
     }
 
-    private void insertProductos(Producto p) {
+    @Override
+    public void insertProducto(Producto p) {
         String sql = "INSERT INTO producto (id, nombre, valor) VALUES(?,?,?)";
         int id = p.getId();
         String nombre = p.getNombre();
