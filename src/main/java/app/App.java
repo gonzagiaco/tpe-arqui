@@ -13,6 +13,7 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) throws SQLException {
+        /* CREACION DE TABLAS E INSERCIÓN DE ELEMENTOS
         CreateTables tablas = new CreateTables();
         tablas.createTables();
 
@@ -28,5 +29,10 @@ public class App {
         FacturasProductosImpl facProdDAO = new FacturasProductosImpl();
         facProdDAO.insertFacturasProductos();
 
+         */
+
+        ServiciosImpl servicios = new ServiciosImpl();
+        Producto p = servicios.getProductoMayorRecaudacion();
+        System.out.println(p);
     }
 }
