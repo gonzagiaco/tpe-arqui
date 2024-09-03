@@ -42,4 +42,13 @@ public class Producto {
     public void setValor(float valor) {
         this.valor = valor;
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", valor=" + valor +
+                '}';
+    }
 }
