@@ -13,7 +13,7 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) throws SQLException {
-        /* CREACION DE TABLAS E INSERCIÓN DE ELEMENTOS
+        /*CREACION DE TABLAS E INSERCIÓN DE ELEMENTOS
         CreateTables tablas = new CreateTables();
         tablas.createTables();
 
@@ -27,12 +27,20 @@ public class App {
         facturasDAO.insertFacturas();
 
         FacturasProductosImpl facProdDAO = new FacturasProductosImpl();
-        facProdDAO.insertFacturasProductos();
-
-         */
+        facProdDAO.insertFacturasProductos();*/
 
         ServiciosImpl servicios = new ServiciosImpl();
+
+        // CONSIGNA N°3
+
         Producto p = servicios.getProductoMayorRecaudacion();
         System.out.println(p);
+
+        // CONSIGNA N°4
+
+        List<Cliente> clientes = servicios.getListaClientesOrdenada();
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente);
+        }
     }
 }
