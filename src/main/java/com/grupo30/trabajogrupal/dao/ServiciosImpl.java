@@ -1,7 +1,7 @@
-package DAO;
+package com.grupo30.trabajogrupal.dao;
 
 import java.sql.Connection;
-import models.*;
+import com.grupo30.trabajogrupal.dto.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,20 +9,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Database.Conec;
+import com.grupo30.trabajogrupal.factory.MySQLDAOFactory;
 
 
 public class ServiciosImpl {
 
     private Connection con;
     public ServiciosImpl() throws SQLException{
-        this.con = Conec.getConnection();
+        this.con = MySQLDAOFactory.createConnection();
 
     }
 
-    public Producto getProductoMayorRecaudacion(){
+    public ProductoDTO getProductoMayorRecaudacion(){
         String query = "SELECT p.id, p.nombre, p.valor, p.valor * SUM(fp.cantidad) AS recaudacion FROM producto p JOIN Factura_producto fp ON p.id = fp.producto_id GROUP BY p.id, p.valor ORDER BY recaudacion DESC LIMIT 1";
-        Producto p = null;
+        ProductoDTO p = null;
 
         try {
             PreparedStatement ps = con.prepareStatement(query);
@@ -34,7 +34,7 @@ public class ServiciosImpl {
                 float valor = rs.getFloat("valor");
                 //float recaudacion = rs.getFloat("recaudacion"); ¿Mostrarla en sout?
 
-                p = new Producto(id, nombre, valor);
+                p = new ProductoDTO(id, nombre, valor);
             }
 
             ps.close();
@@ -45,7 +45,7 @@ public class ServiciosImpl {
         return p;
     }
 
-    public List<Cliente> getListaClientesOrdenada(){
+    public List<ClienteDTO> getListaClientesOrdenada(){
         String query = "SELECT c.*, SUM(fp.cantidad * p.valor) AS total_facturado" +
                 " FROM Cliente c" +
                 " INNER JOIN Factura f ON c.id = f.cliente_id" +
@@ -53,7 +53,7 @@ public class ServiciosImpl {
                 " INNER JOIN Producto p ON fp.producto_id = p.id" +
                 " GROUP BY c.nombre" +
                 " ORDER BY total_facturado DESC;";
-        List<Cliente> clientes = new ArrayList<Cliente>();
+        List<ClienteDTO> clientes = new ArrayList<ClienteDTO>();
 
         try {
             PreparedStatement ps = con.prepareStatement(query);
@@ -64,7 +64,7 @@ public class ServiciosImpl {
                 String nombre = rs.getString(2);
                 String email = rs.getString(3);
 
-                Cliente c = new Cliente(id, nombre, email);
+                ClienteDTO c = new ClienteDTO(id, nombre, email);
                 clientes.add(c);
             }
 

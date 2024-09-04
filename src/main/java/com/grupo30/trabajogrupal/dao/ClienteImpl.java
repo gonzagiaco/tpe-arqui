@@ -1,8 +1,8 @@
-package DAO;
+package com.grupo30.trabajogrupal.dao;
 
-import Database.Conec;
-import csv.CsvRecords;
-import models.Cliente;
+import com.grupo30.trabajogrupal.dto.ClienteDTO;
+import com.grupo30.trabajogrupal.factory.MySQLDAOFactory;
+import com.grupo30.trabajogrupal.utils.CsvRecords;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.*;
@@ -17,8 +17,8 @@ public class ClienteImpl implements ClienteDAO {
     private String csv;
 
     public ClienteImpl() throws SQLException {
-        this.csv = "src/main/java/csv/clientes.csv";
-        this.con = Conec.getConnection();
+        this.csv = "src/main/java/com.grupo30.trabajogrupal.csv/clientes.com.grupo30.trabajogrupal.csv";
+        this.con = MySQLDAOFactory.createConnection();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ClienteImpl implements ClienteDAO {
                 int id = parseInt(row.get("idCliente"));
                 String nombre = row.get("nombre");
                 String email = row.get("email");
-                Cliente c = new Cliente(id, nombre, email);
+                ClienteDTO c = new ClienteDTO(id, nombre, email);
                 insertCliente(c);
             }
 
@@ -43,7 +43,7 @@ public class ClienteImpl implements ClienteDAO {
     }
 
     @Override
-    public void insertCliente(Cliente c){
+    public void insertCliente(ClienteDTO c){
         String sql = "INSERT INTO cliente (id, nombre, email) VALUES(?,?,?)";
         int id = c.getId();
         String nombre = c.getNombre();

@@ -1,12 +1,12 @@
-package models;
+package com.grupo30.trabajogrupal.dto;
 
-public class Factura_Producto {
+public class Factura_ProductoDTO {
 
     private int id_factura;
     private int id_producto;
     private int cantidad;
 
-    public Factura_Producto(int id_factura, int id_producto, int cantidad) {
+    public Factura_ProductoDTO(int id_factura, int id_producto, int cantidad) {
         this.id_factura = id_factura;
         this.id_producto = id_producto;
         this.cantidad = cantidad;

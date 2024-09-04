@@ -1,11 +1,11 @@
-package Database;
+package com.grupo30.trabajogrupal.factory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CreateTables {
-    private final Connection con = Conec.getConnection();
+    private final Connection con = MySQLDAOFactory.createConnection();
 
     public CreateTables() throws SQLException {}
 

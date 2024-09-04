@@ -1,8 +1,8 @@
-package DAO;
+package com.grupo30.trabajogrupal.dao;
 
-import Database.Conec;
-import csv.CsvRecords;
-import models.Factura;
+import com.grupo30.trabajogrupal.factory.MySQLDAOFactory;
+import com.grupo30.trabajogrupal.utils.CsvRecords;
+import com.grupo30.trabajogrupal.dto.FacturaDTO;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.IOException;
@@ -17,8 +17,8 @@ public class FacturasImpl implements FacturasDAO{
 
     public FacturasImpl() throws SQLException{
 
-        this.csv = "src/main/java/csv/facturas.csv";
-        this.con = Conec.getConnection();
+        this.csv = "src/main/java/com.grupo30.trabajogrupal.csv/facturas.com.grupo30.trabajogrupal.csv";
+        this.con = MySQLDAOFactory.createConnection();
     }
 
     @Override
@@ -32,7 +32,7 @@ public class FacturasImpl implements FacturasDAO{
             for(CSVRecord row : records){
                 int idFactura = Integer.parseInt(row.get("idFactura"));
                 int idCliente = Integer.parseInt(row.get("idCliente"));
-                Factura f = new Factura(idFactura, idCliente);
+                FacturaDTO f = new FacturaDTO(idFactura, idCliente);
                 insertFactura(f);
             }
         } catch (IOException e) {
@@ -40,7 +40,7 @@ public class FacturasImpl implements FacturasDAO{
         }
     }
 
-    public void insertFactura(Factura f) {
+    public void insertFactura(FacturaDTO f) {
         String sql = "INSERT INTO factura (id, cliente_id) VALUES (?,?)";
         int id = f.getId();
         int clienteId = f.getId_cliente();

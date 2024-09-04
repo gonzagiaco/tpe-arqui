@@ -1,19 +1,19 @@
-package models;
+package com.grupo30.trabajogrupal.dto;
 
-public class Producto {
+public class ProductoDTO {
 
     private int id;
     public static int auto_id;
     private String nombre;
     private float valor;
 
-    public Producto(String nombre, float valor) {
+    public ProductoDTO(String nombre, float valor) {
         this.id = getAuto_id();
         this.nombre = nombre;
         this.valor = valor;
     }
 
-    public Producto(int id, String nombre, float valor) {
+    public ProductoDTO(int id, String nombre, float valor) {
         this.id = id;
         this.nombre = nombre;
         this.valor = valor;
@@ -45,7 +45,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" +
+        return "ProductoDTO{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", valor=" + valor +

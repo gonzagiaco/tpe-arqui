@@ -1,12 +1,9 @@
-package app;
+package com.grupo30.trabajogrupal;
 
 
-import DAO.*;
-import Database.CreateTables;
-import models.*;
+import com.grupo30.trabajogrupal.dao.*;
+import com.grupo30.trabajogrupal.dto.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -33,13 +30,13 @@ public class App {
 
         // CONSIGNA N°3
 
-        Producto p = servicios.getProductoMayorRecaudacion();
+        ProductoDTO p = servicios.getProductoMayorRecaudacion();
         System.out.println(p);
 
         // CONSIGNA N°4
 
-        List<Cliente> clientes = servicios.getListaClientesOrdenada();
-        for (Cliente cliente : clientes) {
+        List<ClienteDTO> clientes = servicios.getListaClientesOrdenada();
+        for (ClienteDTO cliente : clientes) {
             System.out.println(cliente);
         }
     }

@@ -1,17 +1,17 @@
-package models;
+package com.grupo30.trabajogrupal.dto;
 
-public class Factura {
+public class FacturaDTO {
 
     private int id;
     public static int auto_id;
     private int id_cliente;
 
-    public Factura(int id_cliente) {
+    public FacturaDTO(int id_cliente) {
         this.id = getAuto_id();
         this.id_cliente = id_cliente;
     }
 
-    public Factura(int id_factura, int id_cliente) {
+    public FacturaDTO(int id_factura, int id_cliente) {
         this.id = id_factura;
         this.id_cliente = id_cliente;
     }

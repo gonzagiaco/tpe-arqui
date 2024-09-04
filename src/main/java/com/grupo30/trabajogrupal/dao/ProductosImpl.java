@@ -1,8 +1,7 @@
-package DAO;
+package com.grupo30.trabajogrupal.dao;
 
-import Database.Conec;
-import models.Cliente;
-import models.Producto;
+import com.grupo30.trabajogrupal.dto.ProductoDTO;
+import com.grupo30.trabajogrupal.factory.MySQLDAOFactory;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
@@ -19,8 +18,8 @@ public class ProductosImpl implements ProductosDAO {
     String csv;
     Connection conn;
     public ProductosImpl() throws SQLException{
-        this.csv="src/main/java/csv/productos.csv";
-        conn= Conec.getConnection();
+        this.csv="src/main/java/com.grupo30.trabajogrupal.csv/productos.com.grupo30.trabajogrupal.csv";
+        conn= MySQLDAOFactory.createConnection();
     }
     @Override
     public void insertProductos() {
@@ -36,7 +35,7 @@ public class ProductosImpl implements ProductosDAO {
                 int id = parseInt(row.get("idProducto"));
                 String nombre = row.get("nombre");
                 float valor = Float.parseFloat(row.get("valor"));
-                Producto p = new Producto(id, nombre, valor);
+                ProductoDTO p = new ProductoDTO(id, nombre, valor);
                 insertProducto(p);
             }
 
@@ -46,7 +45,7 @@ public class ProductosImpl implements ProductosDAO {
     }
 
     @Override
-    public void insertProducto(Producto p) {
+    public void insertProducto(ProductoDTO p) {
         String sql = "INSERT INTO producto VALUES(?,?,?)";
         int id = p.getId();
         String nombre = p.getNombre();
