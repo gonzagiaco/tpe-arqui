@@ -1,4 +1,4 @@
-package com.grupo30.trabajogrupal.dao;
+package com.grupo30.trabajogrupal.app;
 
 import java.sql.Connection;
 import com.grupo30.trabajogrupal.dto.*;
@@ -12,10 +12,10 @@ import java.util.List;
 import com.grupo30.trabajogrupal.factory.MySQLDAOFactory;
 
 
-public class ServiciosImpl {
+public class Servicios {
 
     private Connection con;
-    public ServiciosImpl() throws SQLException{
+    public Servicios() throws SQLException{
         this.con = MySQLDAOFactory.createConnection();
 
     }

@@ -1,7 +1,6 @@
-package com.grupo30.trabajogrupal;
+package com.grupo30.trabajogrupal.app;
 
 
-import com.grupo30.trabajogrupal.dao.*;
 import com.grupo30.trabajogrupal.dto.*;
 
 import java.sql.SQLException;
@@ -26,7 +25,7 @@ public class App {
         FacturasProductosImpl facProdDAO = new FacturasProductosImpl();
         facProdDAO.insertFacturasProductos();*/
 
-        ServiciosImpl servicios = new ServiciosImpl();
+        Servicios servicios = new Servicios();
 
         // CONSIGNA N°3
 
