@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class FacturasImpl implements FacturasDAO{
+public class FacturasImpl implements EntidadDAO<FacturaDTO>{
     private Connection con;
     private String csv;
 
@@ -22,7 +22,7 @@ public class FacturasImpl implements FacturasDAO{
     }
 
     @Override
-    public void insertFacturas() {
+    public void insertAll() {
         try{
             String[] HEADERS = {"idFactura", "idCliente"};
 
@@ -33,14 +33,14 @@ public class FacturasImpl implements FacturasDAO{
                 int idFactura = Integer.parseInt(row.get("idFactura"));
                 int idCliente = Integer.parseInt(row.get("idCliente"));
                 FacturaDTO f = new FacturaDTO(idFactura, idCliente);
-                insertFactura(f);
+                insert(f);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void insertFactura(FacturaDTO f) {
+    public void insert(FacturaDTO f) {
         String sql = "INSERT INTO factura (id, cliente_id) VALUES (?,?)";
         int id = f.getId();
         int clienteId = f.getId_cliente();

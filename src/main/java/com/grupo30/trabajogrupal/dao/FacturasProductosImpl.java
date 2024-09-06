@@ -1,5 +1,6 @@
 package com.grupo30.trabajogrupal.dao;
 
+import com.grupo30.trabajogrupal.dto.FacturaDTO;
 import com.grupo30.trabajogrupal.factory.MySQLDAOFactory;
 import com.grupo30.trabajogrupal.utils.CsvRecords;
 import com.grupo30.trabajogrupal.dto.Factura_ProductoDTO;
@@ -10,7 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class FacturasProductosImpl implements FacturasProductosDAO{
+public class FacturasProductosImpl implements EntidadDAO<Factura_ProductoDTO>{
     private Connection con;
     private String csv;
 
@@ -20,7 +21,7 @@ public class FacturasProductosImpl implements FacturasProductosDAO{
     }
 
     @Override
-    public void insertFacturasProductos() {
+    public void insertAll() {
         try{
             String[] HEADERS = {"idFactura", "idProducto", "cantidad"};
 
@@ -32,7 +33,7 @@ public class FacturasProductosImpl implements FacturasProductosDAO{
                 int idProducto = Integer.parseInt(row.get("idProducto"));
                 int cantidad = Integer.parseInt(row.get("cantidad"));
                 Factura_ProductoDTO fp = new Factura_ProductoDTO(idFactura, idProducto, cantidad);
-                insertFacturaProducto(fp);
+                insert(fp);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -42,7 +43,7 @@ public class FacturasProductosImpl implements FacturasProductosDAO{
     }
 
     @Override
-    public void insertFacturaProducto(Factura_ProductoDTO fp) {
+    public void insert(Factura_ProductoDTO fp) {
         String sql = "INSERT INTO factura_producto (factura_id, producto_id, cantidad) VALUES (?,?,?)";
         int idFactura = fp.getId_factura();
         int idProducto = fp.getId_producto();

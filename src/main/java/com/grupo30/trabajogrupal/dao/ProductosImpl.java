@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 import static java.lang.Integer.parseInt;
 
-public class ProductosImpl implements ProductosDAO {
+public class ProductosImpl implements EntidadDAO<ProductoDTO> {
     String csv;
     Connection conn;
     public ProductosImpl() throws SQLException{
@@ -22,7 +22,7 @@ public class ProductosImpl implements ProductosDAO {
         conn= MySQLDAOFactory.createConnection();
     }
     @Override
-    public void insertProductos() {
+    public void insertAll() {
         try {
             String[] HEADERS = {"idProducto", "nombre", "valor"};
 
@@ -36,7 +36,7 @@ public class ProductosImpl implements ProductosDAO {
                 String nombre = row.get("nombre");
                 float valor = Float.parseFloat(row.get("valor"));
                 ProductoDTO p = new ProductoDTO(id, nombre, valor);
-                insertProducto(p);
+                insert(p);
             }
 
         } catch (IOException e) {
@@ -44,8 +44,7 @@ public class ProductosImpl implements ProductosDAO {
         }
     }
 
-    @Override
-    public void insertProducto(ProductoDTO p) {
+    public void insert(ProductoDTO p) {
         String sql = "INSERT INTO producto VALUES(?,?,?)";
         int id = p.getId();
         String nombre = p.getNombre();

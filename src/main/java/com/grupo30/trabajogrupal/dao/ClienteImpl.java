@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 import static java.lang.Integer.parseInt;
 
-public class ClienteImpl implements ClienteDAO {
+public class ClienteImpl implements EntidadDAO<ClienteDTO> {
     private Connection con;
     private String csv;
 
@@ -22,7 +22,7 @@ public class ClienteImpl implements ClienteDAO {
     }
 
     @Override
-    public void insertClientes() {
+    public void insertAll() {
         try {
             String[] HEADERS = {"idCliente", "nombre", "email"};
 
@@ -34,7 +34,7 @@ public class ClienteImpl implements ClienteDAO {
                 String nombre = row.get("nombre");
                 String email = row.get("email");
                 ClienteDTO c = new ClienteDTO(id, nombre, email);
-                insertCliente(c);
+                insert(c);
             }
 
         } catch (IOException e) {
@@ -43,7 +43,7 @@ public class ClienteImpl implements ClienteDAO {
     }
 
     @Override
-    public void insertCliente(ClienteDTO c){
+    public void insert(ClienteDTO c){
         String sql = "INSERT INTO cliente (id, nombre, email) VALUES(?,?,?)";
         int id = c.getId();
         String nombre = c.getNombre();
