@@ -16,10 +16,10 @@ import static java.lang.Integer.parseInt;
 
 public class ProductosImpl implements EntidadDAO<ProductoDTO> {
     String csv;
-    Connection conn;
-    public ProductosImpl() throws SQLException{
-        this.csv="src/main/java/com.grupo30.trabajogrupal.csv/productos.com.grupo30.trabajogrupal.csv";
-        conn= MySQLDAOFactory.createConnection();
+    Connection con;
+    public ProductosImpl(Connection con) throws SQLException{
+        this.csv="src/main/resources/productos.csv";
+        this.con = con;
     }
     @Override
     public void insertAll() {
@@ -51,12 +51,13 @@ public class ProductosImpl implements EntidadDAO<ProductoDTO> {
         float valor = p.getValor();
 
         try{
-            PreparedStatement ps = this.conn.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ps.setString(2, nombre);
             ps.setFloat(3, valor);
             ps.executeUpdate();
             ps.close();
+            con.commit();
         } catch (SQLException e){
             throw new RuntimeException(e);
         }

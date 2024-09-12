@@ -66,7 +66,7 @@ public class CreateTables {
 
         } catch (SQLException e) {
             if (con != null) {
-                con.rollback(); // Deshacer cambios si ocurre un error
+                //con.rollback(); // Deshacer cambios si ocurre un error
             }
             e.printStackTrace();
         } finally {

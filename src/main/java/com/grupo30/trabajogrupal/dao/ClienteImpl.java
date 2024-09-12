@@ -16,14 +16,14 @@ public class ClienteImpl implements EntidadDAO<ClienteDTO> {
     private Connection con;
     private String csv;
 
-    public ClienteImpl() throws SQLException {
-        this.csv = "src/main/java/com.grupo30.trabajogrupal.csv/clientes.com.grupo30.trabajogrupal.csv";
-        this.con = MySQLDAOFactory.createConnection();
+    public ClienteImpl(Connection con) throws SQLException {
+        this.csv = "src/main/resources/clientes.csv";
+        this.con = con;
     }
 
     @Override
     public void insertAll() {
-        try {
+        try{
             String[] HEADERS = {"idCliente", "nombre", "email"};
 
             CsvRecords csvRecords = new CsvRecords();
@@ -50,12 +50,13 @@ public class ClienteImpl implements EntidadDAO<ClienteDTO> {
         String email = c.getEmail();
 
         try{
-            PreparedStatement ps = this.con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ps.setString(2, nombre);
             ps.setString(3, email);
             ps.executeUpdate();
             ps.close();
+            con.commit();
         } catch (SQLException e){
             throw new RuntimeException(e);
         }

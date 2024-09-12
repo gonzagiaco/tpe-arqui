@@ -15,10 +15,10 @@ public class FacturasImpl implements EntidadDAO<FacturaDTO>{
     private String csv;
 
 
-    public FacturasImpl() throws SQLException{
+    public FacturasImpl(Connection con) throws SQLException{
 
-        this.csv = "src/main/java/com.grupo30.trabajogrupal.csv/facturas.com.grupo30.trabajogrupal.csv";
-        this.con = MySQLDAOFactory.createConnection();
+        this.csv = "src/main/resources/facturas.csv";
+        this.con = con;
     }
 
     @Override
@@ -40,6 +40,7 @@ public class FacturasImpl implements EntidadDAO<FacturaDTO>{
         }
     }
 
+
     public void insert(FacturaDTO f) {
         String sql = "INSERT INTO factura (id, cliente_id) VALUES (?,?)";
         int id = f.getId();
@@ -51,6 +52,7 @@ public class FacturasImpl implements EntidadDAO<FacturaDTO>{
             ps.setInt(2, clienteId);
             ps.executeUpdate();
             ps.close();
+            con.commit();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

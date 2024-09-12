@@ -1,6 +1,5 @@
 package com.grupo30.trabajogrupal.dao;
 
-import com.grupo30.trabajogrupal.dto.FacturaDTO;
 import com.grupo30.trabajogrupal.factory.MySQLDAOFactory;
 import com.grupo30.trabajogrupal.utils.CsvRecords;
 import com.grupo30.trabajogrupal.dto.Factura_ProductoDTO;
@@ -15,9 +14,9 @@ public class FacturasProductosImpl implements EntidadDAO<Factura_ProductoDTO>{
     private Connection con;
     private String csv;
 
-    public FacturasProductosImpl() throws SQLException {
-        this.csv = "src/main/java/com.grupo30.trabajogrupal.csv/facturas-productos.com.grupo30.trabajogrupal.csv";
-        this.con = MySQLDAOFactory.createConnection();
+    public FacturasProductosImpl(Connection con) throws SQLException {
+        this.csv = "src/main/resources/facturas-productos.csv";
+        this.con = con;
     }
 
     @Override
@@ -56,6 +55,7 @@ public class FacturasProductosImpl implements EntidadDAO<Factura_ProductoDTO>{
             ps.setInt(3, cantidad);
             ps.executeUpdate();
             ps.close();
+            con.commit();
         } catch (SQLException e) {
             System.err.println("Error al insertar registro: Factura ID = " + idFactura + ", ProductoDTO ID = " + idProducto);
             e.printStackTrace();

@@ -1,5 +1,10 @@
 package com.grupo30.trabajogrupal.factory;
 
+import com.grupo30.trabajogrupal.dao.ClienteImpl;
+import com.grupo30.trabajogrupal.dao.FacturasImpl;
+import com.grupo30.trabajogrupal.dao.FacturasProductosImpl;
+import com.grupo30.trabajogrupal.dao.ProductosImpl;
+
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +14,7 @@ public class MySQLDAOFactory extends AbstractFactory {
     private static MySQLDAOFactory instance = null;
 
     public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    public static final String DB_URL = "jdbc:mysql://localhost:3306/tpgarqui";
+    public static final String uri = "jdbc:mysql://localhost:3306/tpgarqui";
     public static Connection conn;
 
     private MySQLDAOFactory() {
@@ -36,7 +41,7 @@ public class MySQLDAOFactory extends AbstractFactory {
         }
 
         try {
-            conn = DriverManager.getConnection(DB_URL, "root", "");
+            conn = DriverManager.getConnection(uri, "root", "");
             conn.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,4 +56,26 @@ public class MySQLDAOFactory extends AbstractFactory {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public FacturasProductosImpl getFacturasProductosImpl() throws SQLException {
+        return new FacturasProductosImpl(createConnection());
+    }
+
+    @Override
+    public ProductosImpl getProductosImpl() throws SQLException {
+        return new ProductosImpl(createConnection());
+    }
+
+    @Override
+    public FacturasImpl getFacturasImpl() throws SQLException{
+        return new FacturasImpl(createConnection());
+    }
+
+    @Override
+    public ClienteImpl getClientesImpl() throws SQLException{
+        return new ClienteImpl(createConnection());
+    }
+
 }
+
