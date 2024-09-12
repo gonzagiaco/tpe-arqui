@@ -12,8 +12,8 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) throws SQLException {
-        CreateTables tablas = new CreateTables();
-        tablas.createTables();
+        //CreateTables tablas = new CreateTables();
+        //tablas.createTables();
 
         MySQLDAOFactory factory = MySQLDAOFactory.getInstance();
 
