@@ -50,7 +50,7 @@ public class Servicios {
                 " INNER JOIN Factura f ON c.id = f.cliente_id" +
                 " INNER JOIN Factura_Producto fp ON f.id = fp.factura_id" +
                 " INNER JOIN Producto p ON fp.producto_id = p.id" +
-                " GROUP BY c.nombre" +
+                " GROUP BY c.id, c.nombre, c.email" +
                 " ORDER BY total_facturado DESC;";
         List<ClienteDTO> clientes = new ArrayList<ClienteDTO>();
 

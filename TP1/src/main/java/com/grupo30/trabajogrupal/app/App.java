@@ -34,10 +34,11 @@ public class App {
         // CONSIGNA N°3
 
         ProductoDTO p = servicios.getProductoMayorRecaudacion();
+        System.out.println("CONSIGNA 3");
         System.out.println(p);
 
         // CONSIGNA N°4
-
+        System.out.println("CONSIGNA 4");
         List<ClienteDTO> clientes = servicios.getListaClientesOrdenada();
         for (ClienteDTO cliente : clientes) {
             System.out.println(cliente);
