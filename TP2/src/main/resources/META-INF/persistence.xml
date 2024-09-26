@@ -4,8 +4,9 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 <persistence-unit name="grupo30">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.grupo30.dao.Estudiante</class>
-        <class>com.grupo30.dao.Carrera</class>
+        <class>com.grupo30.entidades.Estudiante</class>
+        <class>com.grupo30.entidades.Carrera</class>
+        <class>com.grupo30.entidades.Estudia</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />

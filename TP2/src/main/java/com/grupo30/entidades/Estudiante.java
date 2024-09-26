@@ -1,4 +1,4 @@
-package com.grupo30.dao;
+package com.grupo30.entidades;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,30 +10,37 @@ public class Estudiante {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int nro_libreta;
-    @Column
+
+    @Column (nullable = false)
     private int documento;
-    @Column
+
+    @Column (nullable = false)
     private String nombre;
-    @Column
+
+    @Column (nullable = false)
     private String apellido;
-    @Column
+
+    @Column (nullable = false)
     private int edad;
-    @Column
+
+    @Column (nullable = false)
+    private String genero;
+
+    @Column (nullable = false)
     private String ciudad_residencia;
-    @ManyToMany (mappedBy = "estudiantes", fetch = FetchType.LAZY)
-    List<Carrera> carrera;
 
-    public Estudiante(){
-        super();
-        this.carrera = new ArrayList<>();
-    }
+    @OneToMany (mappedBy = "estudiante",fetch = FetchType.LAZY)
+    private List<Estudia> carreras;
 
-    public Estudiante(int documento, String nombre, String apellido, int edad, String ciudad_residencia) {
+    public Estudiante(int documento, String nombre, String apellido, int edad, String genero, String ciudad_residencia) {
+        this.nro_libreta = nro_libreta;
         this.documento = documento;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
+        this.genero = genero;
         this.ciudad_residencia = ciudad_residencia;
+        this.carreras = new ArrayList<>();
     }
 
     public int getNro_libreta() {
@@ -76,6 +83,14 @@ public class Estudiante {
         this.edad = edad;
     }
 
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
     public String getCiudad_residencia() {
         return ciudad_residencia;
     }
@@ -84,11 +99,11 @@ public class Estudiante {
         this.ciudad_residencia = ciudad_residencia;
     }
 
-    public List<Carrera> getCarrera() {
-        return carrera;
+    public List<Estudia> getCarreras() {
+        return carreras;
     }
 
-    public void setCarrera(List<Carrera> carrera) {
-        this.carrera = carrera;
+    public void setCarreras(List<Estudia> carreras) {
+        this.carreras = carreras;
     }
 }
