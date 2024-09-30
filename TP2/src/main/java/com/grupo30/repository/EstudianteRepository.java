@@ -1,8 +1,12 @@
 package com.grupo30.repository;
 
 import com.grupo30.dao.EstudianteDAO;
+import com.grupo30.entidades.Carrera;
 import com.grupo30.entidades.Estudiante;
 import com.grupo30.DTO.EstudianteDTO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -31,11 +35,35 @@ public class EstudianteRepository {
 
     //c- recuperar todos los estudiantes
     public List<EstudianteDTO> recuperarEstudiantes(String orden){
-        return this.estudianteDAO.selectAll();
+        List<Estudiante> estudiantes = this.estudianteDAO.selectAll(orden);
+        List<EstudianteDTO> estudiantesDTO = new ArrayList<EstudianteDTO>();
+
+        for(Estudiante e : estudiantes){
+            EstudianteDTO eDTO = new EstudianteDTO(e.getDocumento(), e.getNombre(), e.getApellido(), e.getEdad(), e.getGenero(), e.getCiudad_residencia());
+            estudiantesDTO.add(eDTO);
+        }
+
+        return estudiantesDTO;
     }
 
     //e- Recuperar estudiantes por genero
-    public List<Estudiante> recuperarEstudianteGenero(String genero){
-        return estudianteDAO.selectByGenero(genero);
+    public List<EstudianteDTO> recuperarEstudianteGenero(String genero){
+        List<Estudiante> estudiantes = this.estudianteDAO.selectByGenero(genero);
+        List<EstudianteDTO> estudiantesDTO = new ArrayList<EstudianteDTO>();
+        for(Estudiante e : estudiantes){
+            EstudianteDTO eDTO = new EstudianteDTO(e.getDocumento(), e.getNombre(), e.getApellido(), e.getEdad(), e.getGenero(), e.getCiudad_residencia());
+        }
+        return estudiantesDTO;
+    }
+
+    public List<EstudianteDTO> selectEstudiantesPorCarrera(Carrera c, String ciudad){
+        List<Estudiante> estudiantes = this.estudianteDAO.selectEstudiantesPorCarrera(c, ciudad);
+        List<EstudianteDTO> estudiantesDTO = new ArrayList<EstudianteDTO>();
+
+        for(Estudiante e : estudiantes){
+            EstudianteDTO eDTO = new EstudianteDTO(e.getDocumento(), e.getNombre(), e.getApellido(), e.getEdad(), e.getGenero(), e.getCiudad_residencia());
+        }
+
+        return estudiantesDTO;
     }
 }

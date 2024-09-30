@@ -66,4 +66,16 @@ public class EstudianteDTO {
     public void setCiudad_residencia(String ciudad_residencia) {
         this.ciudad_residencia = ciudad_residencia;
     }
+
+    @Override
+    public String toString() {
+        return "EstudianteDTO{" +
+                "documento=" + documento +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", edad=" + edad +
+                ", genero='" + genero + '\'' +
+                ", ciudad_residencia='" + ciudad_residencia + '\'' +
+                '}';
+    }
 }

@@ -13,13 +13,17 @@ public class Carrera {
     private int id;
 
     @Column
-    private String Nombre;
+    private String nombre;
 
     @OneToMany (mappedBy = "carrera", fetch = FetchType.LAZY)
     private List<Estudia> estudiantes;
 
+    public Carrera() {
+        this.estudiantes = new ArrayList<>(); // Inicializando la lista
+    }
+
     public Carrera(String nombre) {
-        Nombre = nombre;
+        nombre = nombre;
         this.estudiantes = new ArrayList<Estudia>();
     }
 
@@ -28,15 +32,15 @@ public class Carrera {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        nombre = nombre;
     }
 
     public List<Estudia> getEstudiantes() {
-        return estudiantes;
+        return new ArrayList<>(estudiantes);
     }
 
     public void setEstudiantes(List<Estudia> estudiantes) {

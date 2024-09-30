@@ -1,10 +1,11 @@
 package com.grupo30.dao;
 
 import com.grupo30.entidades.Carrera;
-import com.grupo30.entidades.Estudia;
 import com.grupo30.entidades.Estudiante;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.util.List;
 
 public class CarreraDAO implements InterfaceDAO<Carrera>{
 
@@ -51,4 +52,12 @@ public class CarreraDAO implements InterfaceDAO<Carrera>{
 
         return null;
     }
+
+    public List<Carrera> selectCarrerasConEstudiantesOrdenadas() {
+        String jpql = "SELECT c FROM Carrera c JOIN c.estudiantes e GROUP BY c ORDER BY COUNT(e) DESC";
+        Query query = em.createQuery(jpql);
+
+        return query.getResultList();
+    }
+
 }

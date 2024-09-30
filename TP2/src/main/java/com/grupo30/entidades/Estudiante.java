@@ -32,8 +32,11 @@ public class Estudiante {
     @OneToMany (mappedBy = "estudiante",fetch = FetchType.LAZY)
     private List<Estudia> carreras;
 
+    public Estudiante() {
+        this.carreras = new ArrayList<>();
+    }
+
     public Estudiante(int documento, String nombre, String apellido, int edad, String genero, String ciudad_residencia) {
-        this.nro_libreta = nro_libreta;
         this.documento = documento;
         this.nombre = nombre;
         this.apellido = apellido;

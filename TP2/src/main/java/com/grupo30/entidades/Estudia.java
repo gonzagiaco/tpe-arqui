@@ -1,6 +1,7 @@
 package com.grupo30.entidades;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 public class Estudia {
@@ -20,9 +21,12 @@ public class Estudia {
     private Boolean graduado;
 
     @Column
-    private int antiguedad;
+    private Date antiguedad;
 
-    public Estudia(Estudiante estudiante, Carrera carrera, Boolean graduado, int antiguedad) {
+    public Estudia() {
+    }
+
+    public Estudia(Estudiante estudiante, Carrera carrera, Boolean graduado, Date antiguedad) {
         this.estudiante = estudiante;
         this.carrera = carrera;
         this.graduado = graduado;
@@ -57,11 +61,11 @@ public class Estudia {
         this.graduado = graduado;
     }
 
-    public int getAntiguedad() {
+    public Date getAntiguedad() {
         return antiguedad;
     }
 
-    public void setAntiguedad(int antiguedad) {
+    public void setAntiguedad(Date antiguedad) {
         this.antiguedad = antiguedad;
     }
 }
