@@ -15,7 +15,9 @@ public class EstudianteDAO implements InterfaceDAO<Estudiante>{
 
     @Override
     public void insert(Estudiante entidad) {
+
         em.persist(entidad);
+
     }
 
     @Override
@@ -37,23 +39,30 @@ public class EstudianteDAO implements InterfaceDAO<Estudiante>{
 
     @Override
     public void delete(int id) {
-
         Estudiante e = em.find(Estudiante.class, id);
-
         if(e != null){
             em.remove(e);
         }
-
     }
 
     @Override
     public Estudiante select(int id) {
         Estudiante e = em.find(Estudiante.class, id);
-
         if(e != null){
             return e;
         }
-
         return null;
     }
+    //Recuperar todos los estudiantes
+    public List<Estudiante> selectAll(){
+        TypedQuery<Estudiante> query=em.createQuery("SELECT e FROM Estudiante e", Estudiante.class);
+        return query.getResultList();
+    }
+    //Recupear estudiantes por genero
+     public List<Estudiante> selectByGenero(String genero){
+        TypedQuery<Estudiante> query=em.createQuery("SELECT e FROM Estudiante e WHERE e.genero=:genero");
+        query.setParameter("genero", genero);
+        return query.getResultList();
+     }
+
 }

@@ -14,13 +14,24 @@ public class EstudianteRepository {
         this.estudianteDAO = new EstudianteDAO(em);
     }
 
+    //a- Recuperar todos los estudiantes
     public void darDeAltaEstudiante(Estudiante estudiante) {
 
         this.estudianteDAO.insert(estudiante);
 
     }
+    //d- Recuperar estudiante por nro libreta
     public Estudiante recuperarEstudianteNroLibreta(int nro){
         return this.estudianteDAO.find(Estudiante.class, nro_libreta)
     }
 
+    //c- recuperar todos los estudiantes
+    public List<Estudiante> recuperarEstudiantes(){
+        return this.estudianteDAO.selectAll();
+    }
+
+    //e- Recuperar estudiantes por genero
+    public List<Estudiante> recuperarEstudianteGenero(String genero){
+        return estudianteDAO.selectByGenero(genero);
+    }
 }
