@@ -8,11 +8,10 @@ import java.util.List;
 public class Estudiante {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int nro_libreta;
+    private int documento;
 
     @Column (nullable = false)
-    private int documento;
+    private int nro_libreta;
 
     @Column (nullable = false)
     private String nombre;
@@ -32,8 +31,11 @@ public class Estudiante {
     @OneToMany (mappedBy = "estudiante",fetch = FetchType.LAZY)
     private List<Estudia> carreras;
 
-    public Estudiante(int documento, String nombre, String apellido, int edad, String genero, String ciudad_residencia) {
-        this.nro_libreta = nro_libreta;
+    public Estudiante() {
+        this.carreras = new ArrayList<>();
+    }
+
+    public Estudiante(int documento, String nombre, String apellido, int edad, String genero, String ciudad_residencia, int nro_libreta) {
         this.documento = documento;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -41,6 +43,7 @@ public class Estudiante {
         this.genero = genero;
         this.ciudad_residencia = ciudad_residencia;
         this.carreras = new ArrayList<>();
+        this.nro_libreta = nro_libreta;
     }
 
     public int getNro_libreta() {

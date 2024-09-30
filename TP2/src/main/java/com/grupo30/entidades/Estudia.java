@@ -6,26 +6,33 @@ import javax.persistence.*;
 public class Estudia {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "libreta_alumno")
+    @JoinColumn(name = "id_alumno")
     private Estudiante estudiante;
 
     @ManyToOne
     private Carrera carrera;
 
     @Column
-    private Boolean graduado;
+    private int inscripcion;
+
+    @Column
+    private int graduado;
 
     @Column
     private int antiguedad;
 
-    public Estudia(Estudiante estudiante, Carrera carrera, Boolean graduado, int antiguedad) {
+    public Estudia() {
+    }
+
+    public Estudia(int id, Estudiante estudiante, Carrera carrera, int inscripcion, int graduacion, int antiguedad) {
+        this.id = id;
         this.estudiante = estudiante;
         this.carrera = carrera;
-        this.graduado = graduado;
+        this.inscripcion = inscripcion;
+        this.graduado = graduacion;
         this.antiguedad = antiguedad;
     }
 
@@ -49,11 +56,23 @@ public class Estudia {
         this.carrera = carrera;
     }
 
-    public Boolean getGraduado() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getInscripcion() {
+        return inscripcion;
+    }
+
+    public void setInscripcion(int inscripcion) {
+        this.inscripcion = inscripcion;
+    }
+
+    public int getGraduado() {
         return graduado;
     }
 
-    public void setGraduado(Boolean graduado) {
+    public void setGraduado(int graduado) {
         this.graduado = graduado;
     }
 

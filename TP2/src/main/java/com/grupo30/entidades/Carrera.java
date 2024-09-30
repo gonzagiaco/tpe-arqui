@@ -9,17 +9,25 @@ import java.util.List;
 public class Carrera {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
-    private String Nombre;
+    private String carrera;
+
+    @Column
+    private int duracion;
 
     @OneToMany (mappedBy = "carrera", fetch = FetchType.LAZY)
     private List<Estudia> estudiantes;
 
-    public Carrera(String nombre) {
-        Nombre = nombre;
+    public Carrera() {
+        this.estudiantes = new ArrayList<>(); // Inicializando la lista
+    }
+
+    public Carrera(int id, String carrera, int duracion) {
+        this.id = id;
+        this.carrera = carrera;
+        this.duracion = duracion;
         this.estudiantes = new ArrayList<Estudia>();
     }
 
@@ -27,19 +35,41 @@ public class Carrera {
         return id;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public String getCarrera() {
+        return carrera;
     }
 
-    public void setNombre(String nombre) {
-        Nombre = nombre;
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
     }
 
     public List<Estudia> getEstudiantes() {
-        return estudiantes;
+        return new ArrayList<>(estudiantes);
     }
 
     public void setEstudiantes(List<Estudia> estudiantes) {
         this.estudiantes = estudiantes;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+    @Override
+    public String toString() {
+        return "Carrera{" +
+                "id=" + id +
+                ", carrera='" + carrera + '\'' +
+                ", duracion=" + duracion +
+                ", estudiantes=" + estudiantes +
+                '}';
     }
 }
