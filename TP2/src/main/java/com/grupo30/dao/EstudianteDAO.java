@@ -53,11 +53,16 @@ public class EstudianteDAO implements InterfaceDAO<Estudiante>{
         }
         return null;
     }
-
-    public List<Estudiante> selectAll(String genero){
+    //Recuperar todos los estudiantes
+    public List<Estudiante> selectAll(){
         TypedQuery<Estudiante> query=em.createQuery("SELECT e FROM Estudiante e", Estudiante.class);
-        query.setParameter("genero", genero);
         return query.getResultList();
     }
+    //Recupear estudiantes por genero
+     public List<Estudiante> selectByGenero(String genero){
+        TypedQuery<Estudiante> query=em.createQuery("SELECT e FROM Estudiante e WHERE e.genero=:genero");
+        query.setParameter("genero", genero);
+        return query.getResultList();
+     }
 
 }
