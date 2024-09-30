@@ -46,16 +46,16 @@ public class EstudianteDAO implements InterfaceDAO<Estudiante>{
     }
 
     @Override
-    public Estudiante select(int id) {
-        Estudiante e = em.find(Estudiante.class, id);
+    public Estudiante select(int nro_libreta) {
+        Estudiante e = em.find(Estudiante.class, nro_libreta);
         if(e != null){
             return e;
         }
         return null;
     }
     //Recuperar todos los estudiantes
-    public List<Estudiante> selectAll(){
-        TypedQuery<Estudiante> query=em.createQuery("SELECT e FROM Estudiante e", Estudiante.class);
+    public List<Estudiante> selectAll(String orden){
+        TypedQuery<Estudiante> query=em.createQuery("SELECT e FROM Estudiante e ORDER BY orden", Estudiante.class);
         return query.getResultList();
     }
     //Recupear estudiantes por genero

@@ -2,6 +2,7 @@ package com.grupo30.repository;
 
 import com.grupo30.dao.EstudianteDAO;
 import com.grupo30.entidades.Estudiante;
+import com.grupo30.DTO.EstudianteDTO;
 
 import javax.persistence.EntityManager;
 
@@ -21,12 +22,15 @@ public class EstudianteRepository {
 
     }
     //d- Recuperar estudiante por nro libreta
-    public Estudiante recuperarEstudianteNroLibreta(int nro){
-        return this.estudianteDAO.find(Estudiante.class, nro_libreta)
+    public EstudianteDTO recuperarEstudianteNroLibreta(int nro){
+        Estudiante estudiante = this.estudianteDAO.select(nro);
+        EstudianteDTO estDTO = new EstudianteDTO(estudiante.getDocumento(), estudiante.getNombre(), estudiante.getApellido(), estudiante.getEdad(), estudiante.getGenero(), estudiante.getCiudad_residencia());
+
+        return estDTO;
     }
 
     //c- recuperar todos los estudiantes
-    public List<Estudiante> recuperarEstudiantes(){
+    public List<EstudianteDTO> recuperarEstudiantes(String orden){
         return this.estudianteDAO.selectAll();
     }
 
