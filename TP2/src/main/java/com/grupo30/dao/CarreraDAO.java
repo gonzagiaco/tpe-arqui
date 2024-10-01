@@ -13,21 +13,19 @@ import java.util.List;
 public class CarreraDAO implements InterfaceDAO<Carrera>{
 
     private EntityManager em;
-    private String csv;
 
     public CarreraDAO(EntityManager em){
 
         this.em = em;
-        this.csv = "src/main/resources/carreras.csv";
     }
 
     @Override
-    public void insertAll() {
+    public void insertAll(String csvURL) {
         try{
             String[] HEADERS = {"id_carrera", "carrera", "duracion"};
 
             CsvRecords csvRecords = new CsvRecords();
-            Iterable<CSVRecord> records = csvRecords.getCsvRecords(HEADERS, this.csv);
+            Iterable<CSVRecord> records = csvRecords.getCsvRecords(HEADERS, csvURL);
 
             for(CSVRecord row : records){
                 int id_carrera = Integer.parseInt(row.get("id_carrera"));
@@ -43,7 +41,7 @@ public class CarreraDAO implements InterfaceDAO<Carrera>{
 
     @Override
     public void insert(Carrera entidad) {
-        em.merge(entidad);
+        em.persist(entidad);
     }
 
     @Override

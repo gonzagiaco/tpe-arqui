@@ -24,13 +24,13 @@ public class Main {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("grupo30");
         EntityManager em = emf.createEntityManager();
 
-        em.getTransaction().begin();
-
-
+        //Inicialización de repositorios
         CarreraRepository repositorioCarrera = new CarreraRepository(em);
         EstudianteRepository repositorioEstudiante = new EstudianteRepository(em);
         EstudiaRepository repositorioEstudia = new EstudiaRepository(em);
 
+
+        em.getTransaction().begin();
 
 
         /* LOS DATOS SON CARGADOS MEDIANTE EL ARCHIVO CSV AUNQUE ESTEN
@@ -49,16 +49,10 @@ public class Main {
 
         */
 
-        // CARGA DE DATOS UTILIZANDO CSV
-
-        /*EstudianteDAO estudianteDAO = new EstudianteDAO(em);
-        estudianteDAO.insertAll();
-
-        CarreraDAO carreraDAO = new CarreraDAO(em);
-        carreraDAO.insertAll();
-
-        EstudiaDAO estudiaDAO = new EstudiaDAO(em);
-        estudiaDAO.insertAll();*/
+        //CARGA DE DATOS CON CSV
+        repositorioEstudiante.insertarDatos("src/main/resources/estudiantes.csv");
+        repositorioCarrera.insertarDatos("src/main/resources/carreras.csv");
+        repositorioEstudia.insertarDatos("src/main/resources/estudianteCarrera.csv");
 
 
         System.out.println("Estudiantes ordenados por nombre:");
@@ -81,7 +75,8 @@ public class Main {
         System.out.println(repositorioEstudiante.selectEstudiantesPorCarrera(repositorioCarrera.buscarCarreraPorID(1), "Rauch"));
         System.out.println("--------------");
 
-
+        System.out.println("Reporte de carreras:");
+        System.out.println(repositorioEstudia.obtenerReportes());
         // Cerrar el EntityManager
         em.getTransaction().commit();
         em.close();

@@ -16,19 +16,15 @@ import java.util.List;
 public class EstudiaDAO implements InterfaceDAO<Estudia>{
 
     private EntityManager em;
-    private String csv;
 
     public EstudiaDAO(EntityManager em){
-        this.csv = "src/main/resources/estudianteCarrera.csv";
         this.em = em;
     }
 
     @Override
     public void insert(Estudia entidad) {
-        em.merge(entidad);
+        em.persist(entidad);
 
-        /*entidad.getEstudiante().getCarreras().add(entidad);
-        entidad.getCarrera().getEstudiantes().add(entidad);*/
     }
 
     @Override
@@ -54,12 +50,12 @@ public class EstudiaDAO implements InterfaceDAO<Estudia>{
     }
 
     @Override
-    public void insertAll() {
+    public void insertAll(String csvURL) {
         try{
             String[] HEADERS = {"id", "id_estudiante", "id_carrera", "inscripcion", "graduacion", "antiguedad"};
 
             CsvRecords csvRecords = new CsvRecords();
-            Iterable<CSVRecord> records = csvRecords.getCsvRecords(HEADERS, this.csv);
+            Iterable<CSVRecord> records = csvRecords.getCsvRecords(HEADERS, csvURL);
 
             for(CSVRecord row : records){
                 int id = Integer.parseInt(row.get("id"));
@@ -91,12 +87,13 @@ public class EstudiaDAO implements InterfaceDAO<Estudia>{
 
     public List<Object[]> getReportes(){
 
-        String jpql = "SELECT c.nombre, e.antiguedad, COUNT(e) AS inscriptos, " +
-                "SUM(CASE WHEN e.graduado = TRUE THEN 1 ELSE 0 END) AS egresados " +
+        String jpql = "SELECT c.carrera, es.inscripcion, " +
+                "COUNT(DISTINCT es.estudiante.id) AS inscriptos, " +
+                "SUM(CASE WHEN es.graduado > 0 THEN 1 ELSE 0 END) AS egresados " +
                 "FROM Carrera c " +
-                "JOIN c.estudiantes e " +
-                "GROUP BY c.nombre, e.antiguedad " +
-                "ORDER BY c.nombre ASC, e.antiguedad ASC";
+                "JOIN c.estudiantes es " +
+                "GROUP BY c.carrera, es.inscripcion " +
+                "ORDER BY c.carrera ASC, es.inscripcion ASC";
 
         Query query = em.createQuery(jpql);
 

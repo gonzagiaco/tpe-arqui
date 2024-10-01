@@ -19,15 +19,19 @@ public class EstudiaRepository {
         this.estudiaDAO.insert(estudia);
     }
 
+    public void insertarDatos(String csvURL){
+        this.estudiaDAO.insertAll(csvURL);
+    }
+
     public List<String> obtenerReportes(){
         List<Object[]> reportes = this.estudiaDAO.getReportes();
         List<String> reporteLista = new ArrayList<String>();
 
         for(Object[] reporte : reportes){
-            reporteLista.add(String.valueOf(reporte[0]));
-            reporteLista.add(String.valueOf(reporte[1]));
-            reporteLista.add(String.valueOf(reporte[2]));
-            reporteLista.add(String.valueOf(reporte[3]));
+            reporteLista.add("Carrera: " + String.valueOf(reporte[0]));
+            reporteLista.add("Inscripción: " + String.valueOf(reporte[1]));
+            reporteLista.add("Inscriptos: " + String.valueOf(reporte[2]));
+            reporteLista.add("Egresados: " + String.valueOf(reporte[3]));
         }
 
         return reporteLista;

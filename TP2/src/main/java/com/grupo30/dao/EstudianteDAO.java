@@ -15,21 +15,19 @@ import org.apache.commons.csv.CSVRecord;
 public class EstudianteDAO implements InterfaceDAO<Estudiante>{
 
     private EntityManager em;
-    private String csv;
 
     public EstudianteDAO(EntityManager em){
 
         this.em = em;
-        this.csv = "src/main/resources/estudiantes.csv";
     }
 
     @Override
-    public void insertAll() {
+    public void insertAll(String csvURL) {
         try{
             String[] HEADERS = {"DNI", "nombre", "apellido", "edad", "genero", "ciudad", "LU"};
 
             CsvRecords csvRecords = new CsvRecords();
-            Iterable<CSVRecord> records = csvRecords.getCsvRecords(HEADERS, this.csv);
+            Iterable<CSVRecord> records = csvRecords.getCsvRecords(HEADERS, csvURL);
 
             for(CSVRecord row : records){
                 int DNI = Integer.parseInt(row.get("DNI"));
@@ -51,7 +49,7 @@ public class EstudianteDAO implements InterfaceDAO<Estudiante>{
     @Override
     public void insert(Estudiante entidad) {
 
-        em.merge(entidad);
+        em.persist(entidad);
 
     }
 
@@ -93,7 +91,7 @@ public class EstudianteDAO implements InterfaceDAO<Estudiante>{
     public List<Estudiante> selectAll(String orden) {
 
         String campoOrden;
-        switch (orden.toLowerCase()) {
+        switch(orden.toLowerCase()) {
             case "nombre":
                 campoOrden = "e.nombre";
                 break;

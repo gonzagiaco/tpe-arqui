@@ -19,6 +19,10 @@ public class EstudianteRepository {
         this.estudianteDAO = new EstudianteDAO(em);
     }
 
+    public void insertarDatos(String csvURL){
+        this.estudianteDAO.insertAll(csvURL);
+    }
+
     //a- Recuperar todos los estudiantes
     public void darDeAltaEstudiante(Estudiante estudiante) {
 

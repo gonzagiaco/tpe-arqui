@@ -8,7 +8,7 @@ public interface InterfaceDAO<T> {
 
     void delete(int id);
 
-    void insertAll();
+    void insertAll(String csv);
 
     T select(int id);
 }

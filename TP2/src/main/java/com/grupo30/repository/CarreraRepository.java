@@ -16,6 +16,10 @@ public class CarreraRepository {
         this.carreraDAO = new CarreraDAO(em);
     }
 
+    public void insertarDatos(String csvURL){
+        this.carreraDAO.insertAll(csvURL);
+    }
+
     public void darDeAltaCarrera(Carrera c){
         this.carreraDAO.insert(c);
     }
