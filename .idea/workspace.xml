@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd2b6497-077b-4779-b2fa-f009e97df53f" name="Changes" comment="Re-organizacion de entregas">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TP2/.idea/misc.xml" afterDir="false" />
-    </list>
+    <list default="true" id="dd2b6497-077b-4779-b2fa-f009e97df53f" name="Changes" comment="Re-organizacion de entregas" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +21,13 @@
     <excluded-from-favorite>
       <branch-storage>
         <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
           <entry type="REMOTE">
             <value>
               <list>
@@ -64,7 +68,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/fermi/IdeaProjects/tpe-arqui/TP1",
+    "last_opened_file_path": "C:/Users/fermi/IdeaProjects/tpe-arqui/TP2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -86,6 +90,13 @@
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="tpe-arqui" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="tpe-arqui" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -130,6 +141,7 @@
       <workItem from="1727712485184" duration="70000" />
       <workItem from="1727775364802" duration="46000" />
       <workItem from="1727775424678" duration="63000" />
+      <workItem from="1728502591124" duration="69000" />
     </task>
     <task id="LOCAL-00001" summary="Reimplementacion de MySQLDAOFactory y arreglo en el cierre de conexiones">
       <option name="closed" value="true" />
