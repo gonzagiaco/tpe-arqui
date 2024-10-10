@@ -41,7 +41,7 @@ public class EstudianteServicio implements BaseServicios<Estudiante>{
     @Override
     public Estudiante update(Long id, Estudiante entity) throws Exception {
         try{
-            Optional<Estudiante> estudianteBuscado = estudianteRepository.findById(id);
+            Optional<Estudiante> estudianteBuscado = estudianteRepository.findByID(id);
             Estudiante e = estudianteBuscado.get();
             e = estudianteRepository.persist(e);
             return e;

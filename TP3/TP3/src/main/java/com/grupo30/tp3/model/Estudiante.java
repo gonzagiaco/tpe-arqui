@@ -2,16 +2,17 @@ package com.grupo30.tp3.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Entity
-@Data
 public class Estudiante {
     @Id
-    private int documento;
+    private long documento;
 
     @Column(nullable = false)
     private int nro_libreta;
@@ -31,21 +32,21 @@ public class Estudiante {
     @Column (nullable = false)
     private String ciudad_residencia;
 
-    @OneToMany(mappedBy = "estudiante",fetch = FetchType.LAZY)
-    private List<Estudia> carreras;
+    //@OneToMany(mappedBy = "estudiante",fetch = FetchType.LAZY)
+    //private List<Estudia> carreras;
 
     public Estudiante() {
-        this.carreras = new ArrayList<>();
+        //this.carreras = new ArrayList<>();
     }
 
-    public Estudiante(int documento, String nombre, String apellido, int edad, String genero, String ciudad_residencia, int nro_libreta) {
+    public Estudiante(long documento, String nombre, String apellido, int edad, String genero, String ciudad_residencia, int nro_libreta) {
         this.documento = documento;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.genero = genero;
         this.ciudad_residencia = ciudad_residencia;
-        this.carreras = new ArrayList<>();
+        //this.carreras = new ArrayList<>();
         this.nro_libreta = nro_libreta;
     }
 
@@ -57,7 +58,7 @@ public class Estudiante {
         this.nro_libreta = nro_libreta;
     }
 
-    public int getDocumento() {
+    public long getDocumento() {
         return documento;
     }
 
@@ -105,11 +106,11 @@ public class Estudiante {
         this.ciudad_residencia = ciudad_residencia;
     }
 
-    public List<Estudia> getCarreras() {
+    /*public List<Estudia> getCarreras() {
         return carreras;
     }
 
     public void setCarreras(List<Estudia> carreras) {
         this.carreras = carreras;
-    }
+    }*/
 }

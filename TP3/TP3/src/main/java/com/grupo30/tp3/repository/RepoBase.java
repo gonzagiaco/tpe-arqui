@@ -10,11 +10,9 @@ import java.util.Optional;
 @NoRepositoryBean
 public interface RepoBase<T, ID extends Serializable> extends JpaRepository<T, ID> {
 
-    void delete (T deleted);
-
     List<T> findAll();
 
-    Optional<T> findById(Long id);
+    Optional<T> findByID(Long id);
 
     boolean existById(Long id);
 

@@ -6,10 +6,7 @@ import com.grupo30.tp3.servicios.EstudianteServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/Estudiante")
@@ -18,13 +15,22 @@ public class EstudianteControllerJpa {
     @Autowired
     private EstudianteServicio estudianteServicio;
 
+    @GetMapping
+    public ResponseEntity<?> findAll() {
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(estudianteServicio.findAll());
+        } catch(Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor intente más tarde.\"}");
+        }
+    }
+
 
     /**
      * Dar de alta a un estudiante
      * @param estudiante
      * @return
      */
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<?> save(@RequestBody Estudiante estudiante) {
         try{
             return ResponseEntity.status(HttpStatus.OK).body(estudianteServicio.save(estudiante));

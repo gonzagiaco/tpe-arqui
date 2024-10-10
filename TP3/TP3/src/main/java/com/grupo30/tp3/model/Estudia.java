@@ -5,7 +5,6 @@ import javax.persistence.*;
 
 import lombok.Data;
 
-
 @Entity
 @Data
 public class Estudia {
@@ -17,6 +16,7 @@ public class Estudia {
     private Estudiante estudiante;
 
     @ManyToOne
+    @JoinColumn(name = "id_carrera")
     private Carrera carrera;
 
     @Column

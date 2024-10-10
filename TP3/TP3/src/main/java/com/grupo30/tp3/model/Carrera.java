@@ -3,16 +3,15 @@ package com.grupo30.tp3.model;
 import jakarta.persistence.Entity;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
+@Table(name="carrera")
 public class Carrera {
+
     @Id
     private int id;
 
@@ -23,7 +22,7 @@ public class Carrera {
     private int duracion;
 
     @OneToMany(mappedBy = "carrera", fetch = FetchType.LAZY)
-    private List<Estudia> estudiantes;
+    private List<alter.Estudia> estudiantes;
 
     public Carrera() {
         this.estudiantes = new ArrayList<>(); // Inicializando la lista
@@ -33,7 +32,7 @@ public class Carrera {
         this.id = id;
         this.carrera = carrera;
         this.duracion = duracion;
-        this.estudiantes = new ArrayList<Estudia>();
+        this.estudiantes = new ArrayList<alter.Estudia>();
     }
 
     public int getId(){
@@ -48,11 +47,11 @@ public class Carrera {
         this.carrera = carrera;
     }
 
-    public List<Estudia> getEstudiantes() {
+    public List<alter.Estudia> getEstudiantes() {
         return estudiantes;
     }
 
-    public void setEstudiantes(List<Estudia> estudiantes) {
+    public void setEstudiantes(List<alter.Estudia> estudiantes) {
         this.estudiantes = estudiantes;
     }
 
