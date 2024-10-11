@@ -43,12 +43,12 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {}
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/gonzagiaco/tpe-arqui.git&quot;,
-    &quot;accountId&quot;: &quot;37b84986-1fa7-4b26-87fa-783fc4dcdda0&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/gonzagiaco/tpe-arqui.git",
+    "accountId": "937e8c08-5fef-4fdb-8145-cba6fcc6a6ef"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -68,7 +68,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/fermi/IdeaProjects/tpe-arqui/TP2",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/tpe-arqui/TP3/TP3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -105,8 +105,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.419" />
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.419" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
       </set>
     </attachedChunks>
   </component>
@@ -142,6 +142,7 @@
       <workItem from="1727775364802" duration="46000" />
       <workItem from="1727775424678" duration="63000" />
       <workItem from="1728502591124" duration="69000" />
+      <workItem from="1728678333134" duration="170000" />
     </task>
     <task id="LOCAL-00001" summary="Reimplementacion de MySQLDAOFactory y arreglo en el cierre de conexiones">
       <option name="closed" value="true" />
