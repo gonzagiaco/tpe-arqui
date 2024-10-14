@@ -18,4 +18,6 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
     @Query("SELECT e FROM Estudiante e WHERE e.nro_libreta = :nroLibreta")
     Optional<Estudiante> findByNroLibreta(@Param("nroLibreta") int nroLibreta);
 
+    @Query("SELECT e FROM Estudiante e WHERE e.genero= :genero")
+    List<Estudiante> findByGenero(@Param("genero") String genero);
 }

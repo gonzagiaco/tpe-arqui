@@ -100,5 +100,20 @@ public class EstudianteServicio implements BaseServicios<Estudiante>{
                 .map(estudiante -> new EstudianteDTO(estudiante.getDocumento(), estudiante.getNombre(), estudiante.getApellido(), estudiante.getEdad()))
                 .collect(Collectors.toList());
     }
+    //Obtener todos los estudiantes por genero
+    @Transactional(readOnly = true)
+    public List<EstudianteDTO> getEstudianteByGenero(String genero) throws Exception {
+        try {
+            List<Estudiante> estudiantes = estudianteRepository.findByGenero(genero);
+            return estudiantes.stream()
+                    .map(e -> new EstudianteDTO(e.getDocumento(), e.getNombre(), e.getApellido(), e.getEdad()))
+                    .collect(Collectors.toList());
+
+        }catch (NoSuchElementException e) {
+            throw new Exception("Estudiantes no encontrados: " + e.getMessage(), e);
+        } catch (Exception e) {
+            throw new Exception("Error al buscar estudiantes por genero: " + e.getMessage(), e);
+        }
+    }
 
 }

@@ -46,7 +46,7 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/gonzagiaco/tpe-arqui.git",
-    "accountId": "937e8c08-5fef-4fdb-8145-cba6fcc6a6ef"
+    "accountId": "1b212080-e2ea-403a-acf1-01aaf0710a1d"
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -68,7 +68,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/User/IdeaProjects/tpe-arqui/TP3/TP3",
+    "last_opened_file_path": "C:/Users/enzoj/IdeaProjects/tpe-arquii/TP3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -143,6 +143,7 @@
       <workItem from="1727775424678" duration="63000" />
       <workItem from="1728502591124" duration="69000" />
       <workItem from="1728678333134" duration="170000" />
+      <workItem from="1728848348616" duration="220000" />
     </task>
     <task id="LOCAL-00001" summary="Reimplementacion de MySQLDAOFactory y arreglo en el cierre de conexiones">
       <option name="closed" value="true" />

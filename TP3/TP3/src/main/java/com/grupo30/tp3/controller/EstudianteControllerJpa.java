@@ -88,4 +88,20 @@ public class EstudianteControllerJpa {
         }
     }
 
+    @GetMapping("/genero")
+    public ResponseEntity<List<EstudianteDTO>> getEstudianteByGenero(@PathVariable String genero){
+        try {
+            List<EstudianteDTO> estudiantes = estudianteServicio.getEstudianteByGenero(genero);
+            if (estudiantes != null) {
+                return ResponseEntity.ok(estudiantes);
+            } else {
+                return ResponseEntity.status(404).body(null);
+            }
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(null);
+        }
+    }
+
 }
