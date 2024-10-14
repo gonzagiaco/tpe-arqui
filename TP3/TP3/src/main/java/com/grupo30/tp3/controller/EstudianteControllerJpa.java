@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Estudiante")
+@RequestMapping("/estudiantes")
 public class EstudianteControllerJpa {
 
     @Autowired
     private EstudianteServicio estudianteServicio;
 
-    @GetMapping
+    @GetMapping("")
     public ResponseEntity<?> findAll() {
         try{
             return ResponseEntity.status(HttpStatus.OK).body(estudianteServicio.findAll());
@@ -38,7 +38,7 @@ public class EstudianteControllerJpa {
      * - Retorna una respuesta HTTP 404 (NOT FOUND) si el estudiante no es encontrado.
      * - Retorna una respuesta HTTP 500 (Internal Server Error) en caso de un error inesperado.
      */
-    @GetMapping("/estudiantes/nrolibreta/{nrolibreta}")
+    @GetMapping("/nrolibreta/{nrolibreta}")
     public ResponseEntity<EstudianteDTO> getEstudiantePorNroLibreta(@PathVariable int nrolibreta) {
         try {
             EstudianteDTO estudiante = estudianteServicio.buscarEstudiantePorNroLibreta(nrolibreta);
@@ -65,7 +65,7 @@ public class EstudianteControllerJpa {
      * - Retorna una respuesta HTTP 400 (Bad Request) si el criterio de orden no es válido.
      * - Retorna una respuesta HTTP 500 (Internal Server Error) en caso de un error inesperado.
      */
-    @GetMapping("/estudiantes")
+    @GetMapping("/order")
     public ResponseEntity<List<EstudianteDTO>> getEstudiantesOrdenados(
             @RequestParam(value = "orden", defaultValue = "nombre") String orden) {
         try {

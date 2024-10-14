@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -37,7 +38,7 @@ public class EstudianteServicio implements BaseServicios<Estudiante>{
     @Override
     public Estudiante save(Estudiante entity) throws Exception {
         try{
-            return estudianteRepository.persist(entity);
+            return estudianteRepository.save(entity);
         }catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -46,9 +47,9 @@ public class EstudianteServicio implements BaseServicios<Estudiante>{
     @Override
     public Estudiante update(Long id, Estudiante entity) throws Exception {
         try{
-            Optional<Estudiante> estudianteBuscado = estudianteRepository.findByID(id);
+            Optional<Estudiante> estudianteBuscado = estudianteRepository.findById(id);
             Estudiante e = estudianteBuscado.get();
-            e = estudianteRepository.persist(e);
+            e = estudianteRepository.save(e);
             return e;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -58,8 +59,8 @@ public class EstudianteServicio implements BaseServicios<Estudiante>{
     @Override
     public boolean delete(Long id) throws Exception {
         try {
-            if (estudianteRepository.existById(id)) {
-                estudianteRepository.deleteByID(id);
+            if (estudianteRepository.existsById(id)) {
+                estudianteRepository.deleteById(id);
                 return true;
             } else {
                 throw new Exception("Estudiante no encontrado");
@@ -73,10 +74,11 @@ public class EstudianteServicio implements BaseServicios<Estudiante>{
     @Transactional(readOnly = true)
     public EstudianteDTO buscarEstudiantePorNroLibreta(int nroLibreta) throws Exception {
         try {
-            var optionalEstudiante = estudianteRepository.findByNroLibreta(nroLibreta);
-            return optionalEstudiante.map(estudiante ->
-                            new EstudianteDTO(estudiante.getDocumento(), estudiante.getNombre(), estudiante.getApellido(), estudiante.getEdad()))
-                    .orElseThrow(() -> new Exception("No se encontró ningún estudiante con el número de libreta: " + nroLibreta));
+            Optional<Estudiante> estudiante = estudianteRepository.findByNroLibreta(nroLibreta);
+            Estudiante e = estudiante.get();
+            return new EstudianteDTO(e.getDocumento(), e.getNombre(), e.getApellido(), e.getEdad());
+        } catch (NoSuchElementException e) {
+            throw new Exception("Estudiante no encontrado: " + e.getMessage(), e);
         } catch (Exception e) {
             throw new Exception("Error al buscar estudiante por número de libreta: " + e.getMessage(), e);
         }

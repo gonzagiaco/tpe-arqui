@@ -1,19 +1,18 @@
 package com.grupo30.tp3.model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
-@Table(name="carrera")
 public class Carrera {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @Column
     private String carrera;
@@ -22,20 +21,19 @@ public class Carrera {
     private int duracion;
 
     @OneToMany(mappedBy = "carrera", fetch = FetchType.LAZY)
-    private List<alter.Estudia> estudiantes;
+    private List<Estudia> estudiantes = new ArrayList<>();
 
     public Carrera() {
         this.estudiantes = new ArrayList<>(); // Inicializando la lista
     }
 
-    public Carrera(int id, String carrera, int duracion) {
+    public Carrera(long id, String carrera, int duracion) {
         this.id = id;
         this.carrera = carrera;
         this.duracion = duracion;
-        this.estudiantes = new ArrayList<alter.Estudia>();
     }
 
-    public int getId(){
+    public long getId(){
         return id;
     }
 
@@ -47,15 +45,15 @@ public class Carrera {
         this.carrera = carrera;
     }
 
-    public List<alter.Estudia> getEstudiantes() {
+    public List<Estudia> getEstudiantes() {
         return estudiantes;
     }
 
-    public void setEstudiantes(List<alter.Estudia> estudiantes) {
+    public void setEstudiantes(List<Estudia> estudiantes) {
         this.estudiantes = estudiantes;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

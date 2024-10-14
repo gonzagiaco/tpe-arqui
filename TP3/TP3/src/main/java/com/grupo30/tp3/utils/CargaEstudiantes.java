@@ -17,7 +17,8 @@ import java.io.IOException;
 @Component
 public class CargaEstudiantes {
 
-    private final EstudianteRepository estudianteRepository;
+    @Autowired
+    private EstudianteRepository estudianteRepository;
 
 
     @Autowired
@@ -39,7 +40,7 @@ public class CargaEstudiantes {
                 estudiante.setGenero(csvRecord.get("genero"));
                 estudiante.setCiudad_residencia(csvRecord.get("ciudad"));
                 estudiante.setNro_libreta(Integer.parseInt(csvRecord.get("LU")));
-                estudianteRepository.persist(estudiante);
+                estudianteRepository.save(estudiante);
             }
         }
     }

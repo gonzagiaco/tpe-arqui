@@ -1,14 +1,15 @@
 package com.grupo30.tp3.model;
 
 
-import javax.persistence.*;
-
+import jakarta.persistence.*;
 import lombok.Data;
+
 
 @Entity
 @Data
 public class Estudia {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
@@ -16,14 +17,14 @@ public class Estudia {
     private Estudiante estudiante;
 
     @ManyToOne
-    @JoinColumn(name = "id_carrera")
+    @JoinColumn(name = "carrera_id")
     private Carrera carrera;
 
     @Column
     private int inscripcion;
 
     @Column
-    private int graduado;
+    private int graduacion;
 
     @Column
     private int antiguedad;
@@ -36,55 +37,8 @@ public class Estudia {
         this.estudiante = estudiante;
         this.carrera = carrera;
         this.inscripcion = inscripcion;
-        this.graduado = graduacion;
+        this.graduacion = graduacion;
         this.antiguedad = antiguedad;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public Estudiante getEstudiante() {
-        return estudiante;
-    }
-
-    public void setEstudiante(Estudiante estudiante) {
-        this.estudiante = estudiante;
-    }
-
-    public Carrera getCarrera() {
-        return carrera;
-    }
-
-    public void setCarrera(Carrera carrera) {
-        this.carrera = carrera;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getInscripcion() {
-        return inscripcion;
-    }
-
-    public void setInscripcion(int inscripcion) {
-        this.inscripcion = inscripcion;
-    }
-
-    public int getGraduado() {
-        return graduado;
-    }
-
-    public void setGraduado(int graduado) {
-        this.graduado = graduado;
-    }
-
-    public int getAntiguedad() {
-        return antiguedad;
-    }
-
-    public void setAntiguedad(int antiguedad) {
-        this.antiguedad = antiguedad;
-    }
 }

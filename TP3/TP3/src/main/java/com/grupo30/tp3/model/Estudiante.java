@@ -1,14 +1,12 @@
 package com.grupo30.tp3.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Data
 @Entity
 public class Estudiante {
     @Id
@@ -17,23 +15,23 @@ public class Estudiante {
     @Column(nullable = false)
     private int nro_libreta;
 
-    @Column (nullable = false)
+    @Column(nullable = false)
     private String nombre;
 
-    @Column (nullable = false)
+    @Column(nullable = false)
     private String apellido;
 
-    @Column (nullable = false)
+    @Column(nullable = false)
     private int edad;
 
-    @Column (nullable = false)
+    @Column(nullable = false)
     private String genero;
 
-    @Column (nullable = false)
+    @Column(nullable = false)
     private String ciudad_residencia;
 
-    //@OneToMany(mappedBy = "estudiante",fetch = FetchType.LAZY)
-    //private List<Estudia> carreras;
+    @OneToMany(mappedBy = "estudiante",fetch = FetchType.LAZY)
+    private List<Estudia> carreras;
 
     public Estudiante() {
         //this.carreras = new ArrayList<>();
@@ -106,11 +104,11 @@ public class Estudiante {
         this.ciudad_residencia = ciudad_residencia;
     }
 
-    /*public List<Estudia> getCarreras() {
+    public List<Estudia> getCarreras() {
         return carreras;
     }
 
     public void setCarreras(List<Estudia> carreras) {
         this.carreras = carreras;
-    }*/
+    }
 }
