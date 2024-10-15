@@ -113,4 +113,17 @@ public class Estudiante {
     public void setCarreras(List<Estudia> carreras) {
         this.carreras = carreras;
     }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" +
+                "documento=" + documento +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", edad=" + edad +
+                ", genero='" + genero + '\'' +
+                ", ciudad_residencia='" + ciudad_residencia + '\'' +
+                ", nro_libreta=" + nro_libreta +
+                '}';
+    }
 }

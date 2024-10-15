@@ -109,19 +109,16 @@ public class EstudianteControllerJpa {
      * - 400 BAD REQUEST: Si el parámetro de género es inválido.
      * - 500 INTERNAL SERVER ERROR: Si ocurre un error en el servidor.
      */
-     @GetMapping("/{genero}")
-    public ResponseEntity<List<EstudianteDTO>> getEstudianteByGenero(@PathVariable String genero){
+    @GetMapping("/genero")
+    public ResponseEntity<List<EstudianteDTO>> getEstudianteByGenero(
+            @RequestParam(value = "genero", defaultValue = "masculino") String genero) {
         try {
             List<EstudianteDTO> estudiantes = estudianteServicio.getEstudianteByGenero(genero);
-            if (estudiantes != null) {
-                return ResponseEntity.ok(estudiantes);
-            } else {
-                return ResponseEntity.status(404).body(null);
-            }
+            return ResponseEntity.ok(estudiantes);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);
         } catch (Exception e) {
-            return ResponseEntity.status(500).body(null);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
@@ -138,19 +135,17 @@ public class EstudianteControllerJpa {
      * - Retorna una respuesta HTTP 400 (Bad Request) si el criterio de orden no es válido.
      * - Retorna una respuesta HTTP 500 (Internal Server Error) en caso de un error inesperado.
      */
-    @GetMapping("/{carrera}/{ciudad}")
-    public ResponseEntity<List<EstudianteDTO>> getEstudianteByCarreraFilterCiudad(@PathVariable String carrera, @PathVariable String ciudad) {
+    @GetMapping("/filter")
+    public ResponseEntity<List<EstudianteDTO>> getEstudianteByCarreraFilterCiudad(
+            @RequestParam(value = "carrera") String carrera,
+            @RequestParam(value = "ciudad") String ciudad) {
         try {
             List<EstudianteDTO> estudiantes = estudianteServicio.getEstudianteByCarreraFilterCiudad(carrera, ciudad);
-            if (estudiantes != null) {
-                return ResponseEntity.ok(estudiantes);
-            } else {
-                return ResponseEntity.status(404).body(null);
-            }
+            return ResponseEntity.ok(estudiantes);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);
         } catch (Exception e) {
-            return ResponseEntity.status(500).body(null);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 

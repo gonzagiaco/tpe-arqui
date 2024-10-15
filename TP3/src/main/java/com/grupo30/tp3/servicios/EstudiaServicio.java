@@ -15,7 +15,7 @@ public class EstudiaServicio implements BaseServicios<Estudia>{
 
     @Override
     public List<Estudia> findAll() throws Exception {
-        return List.of();
+        return esRepository.findAll();
     }
 
     @Override
@@ -26,7 +26,7 @@ public class EstudiaServicio implements BaseServicios<Estudia>{
     @Override
     public Estudia save(Estudia entity) throws Exception {
         try{
-            return EstudianteCarreraRepository.save(entity);
+            return esRepository.save(entity);
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());
         }

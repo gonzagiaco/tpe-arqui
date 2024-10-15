@@ -41,4 +41,13 @@ public class Estudia {
         this.antiguedad = antiguedad;
     }
 
+    @Override
+    public String toString() {
+        return "Estudia{" +
+                "id=" + id +
+                ", inscripcion=" + inscripcion +
+                ", graduacion=" + graduacion +
+                ", antiguedad=" + antiguedad +
+                '}';
+    }
 }

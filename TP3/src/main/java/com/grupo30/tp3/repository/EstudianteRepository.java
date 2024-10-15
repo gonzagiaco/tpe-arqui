@@ -23,8 +23,7 @@ public interface EstudianteRepository extends RepoBase<Estudiante, Long> {
     @Query("SELECT e FROM Estudiante e WHERE e.genero= :genero")
     List<Estudiante> findByGenero(@Param("genero") String genero);
 
-    @Query("SELECT e.estudiante FROM Estudia e JOIN e.carrera c JOIN e.estudiante s WHERE c.carrera = :carrera AND s.ciudad_residencia = :ciudad")
-    List<Estudiante> findByCarreraFilterCiudad(@Param("carrera") String carrera,@Param("ciudad") String ciudad);
-
+    @Query("SELECT e FROM Estudiante e JOIN e.carreras es JOIN es.carrera c WHERE c.carrera LIKE :carrera AND e.ciudad_residencia LIKE :ciudad")
+    List<Estudiante> findByCarreraFilterCiudad(@Param("carrera") String carrera, @Param("ciudad") String ciudad);
 
 }
