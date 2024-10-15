@@ -25,4 +25,6 @@ public interface EstudianteRepository extends RepoBase<Estudiante, Long> {
 
     @Query("SELECT e.estudiante FROM Estudia e JOIN e.carrera c JOIN e.estudiante s WHERE c.carrera = :carrera AND s.ciudad_residencia = :ciudad")
     List<Estudiante> findByCarreraFilterCiudad(@Param("carrera") String carrera,@Param("ciudad") String ciudad);
+
+
 }

@@ -79,4 +79,9 @@ public class CarreraServicio implements BaseServicios<Carrera>{
         }
         return carrerasDTO;
     }
+
+    @Transactional(readOnly = true)
+    public List<Object[]> getReporteCarreras() {
+        return carreraRepository.getReporteCarreras();
+    }
 }

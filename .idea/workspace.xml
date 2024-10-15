@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd2b6497-077b-4779-b2fa-f009e97df53f" name="Changes" comment="Re-organizacion de entregas" />
+    <list default="true" id="dd2b6497-077b-4779-b2fa-f009e97df53f" name="Changes" comment="Re-organizacion de entregas">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/controller/CarreraControllerJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/controller/CarreraControllerJpa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/repository/CarreraRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/repository/CarreraRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/repository/EstudianteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/repository/EstudianteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/servicios/CarreraServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/servicios/CarreraServicio.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,12 +49,12 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {}
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/gonzagiaco/tpe-arqui.git",
-    "accountId": "1b212080-e2ea-403a-acf1-01aaf0710a1d"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/gonzagiaco/tpe-arqui.git&quot;,
+    &quot;accountId&quot;: &quot;1b212080-e2ea-403a-acf1-01aaf0710a1d&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -61,23 +67,23 @@
     <option name="showLibraryContents" value="true" />
     <option name="sortKey" value="BY_TIME_DESCENDING" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/enzoj/IdeaProjects/tpe-arquii/TP3",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/fermi/IdeaProjects/tpe-arqui/TP1/src/main/java/org/example/Main.java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/enzoj/IdeaProjects/tpe-arquii/TP3&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/fermi/IdeaProjects/tpe-arqui/TP1/src/main/java/org/example/Main.java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\fermi\IdeaProjects\tpe-arqui\TP2\src" />

@@ -33,4 +33,26 @@ public class CarreraControllerJpa {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor intente más tarde.\"}");
         }
     }
+
+    @GetMapping("/reporte")
+    public ResponseEntity<List<String>> getReportesCarreras() {
+        try {
+            List<Object[]> reportes = carreraServicio.getReporteCarreras();
+            List<String> reportesFormateados = new ArrayList<>();
+
+            for (Object[] reporte : reportes) {
+                String carrera = (String) reporte[0];
+                int inscripcion = (int) reporte[1];
+                long inscriptos = (long) reporte[2];
+                long egresados = (long) reporte[3];
+
+                reportesFormateados.add(String.format("Carrera: %s, Inscripción: %d, Inscriptos: %d, Egresados: %d",
+                        carrera, inscripcion, inscriptos, egresados));
+            }
+
+            return ResponseEntity.status(HttpStatus.OK).body(reportesFormateados);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(List.of("{\"error\":\"Error. Por favor intente más tarde.\"}"));
+        }
+    }
 }
