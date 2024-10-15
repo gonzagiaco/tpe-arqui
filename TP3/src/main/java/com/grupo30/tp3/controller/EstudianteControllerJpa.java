@@ -78,8 +78,17 @@ public class EstudianteControllerJpa {
         }
     }
 
-
-    @PostMapping("")
+    /**
+     * Guarda un objeto Estudiante en la base de datos.
+     *
+     * @param estudiante El objeto Estudiante enviado en el cuerpo de la solicitud.
+     * @return ResponseEntity con el estado HTTP y el estudiante guardado o un mensaje de error si falla.
+     *
+     * Respuestas:
+     * - 200 OK: Si el estudiante fue guardado correctamente.
+     * - 400 BAD REQUEST: Si ocurre un error al guardar el estudiante (por ejemplo, campos inválidos).
+     */
+     @PostMapping("")
     public ResponseEntity<?> save(@RequestBody Estudiante estudiante) {
         try{
             return ResponseEntity.status(HttpStatus.OK).body(estudianteServicio.save(estudiante));
@@ -88,7 +97,19 @@ public class EstudianteControllerJpa {
         }
     }
 
-    @GetMapping("/{genero}")
+    /**
+     * Obtiene una lista de estudiantes filtrados por género.
+     *
+     * @param genero El género por el cual se filtrarán los estudiantes.
+     * @return ResponseEntity con la lista de EstudianteDTO o un error si no se encuentran resultados.
+     *
+     * Respuestas:
+     * - 200 OK: Si se encuentran estudiantes con el género especificado.
+     * - 404 NOT FOUND: Si no se encuentran estudiantes con el género especificado.
+     * - 400 BAD REQUEST: Si el parámetro de género es inválido.
+     * - 500 INTERNAL SERVER ERROR: Si ocurre un error en el servidor.
+     */
+     @GetMapping("/{genero}")
     public ResponseEntity<List<EstudianteDTO>> getEstudianteByGenero(@PathVariable String genero){
         try {
             List<EstudianteDTO> estudiantes = estudianteServicio.getEstudianteByGenero(genero);
