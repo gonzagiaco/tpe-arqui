@@ -8,10 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service ("EstudianteServicio")
@@ -29,7 +26,8 @@ public class EstudianteServicio implements BaseServicios<Estudiante>{
     public Estudiante findById(Long id) throws Exception {
         try{
             Optional<Estudiante> estudianteBuscado = estudianteRepository.findById(id);
-            return estudianteBuscado.get();
+            Estudiante e = estudianteBuscado.get();
+            return e;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -76,7 +74,7 @@ public class EstudianteServicio implements BaseServicios<Estudiante>{
         try {
             Optional<Estudiante> estudiante = estudianteRepository.findByNroLibreta(nroLibreta);
             Estudiante e = estudiante.get();
-            return new EstudianteDTO(e.getDocumento(), e.getNombre(), e.getApellido(), e.getEdad());
+            return new EstudianteDTO(e.getDocumento(), e.getNombre(), e.getApellido(), e.getEdad(), e.getGenero(), e.getCiudad_residencia());
         } catch (NoSuchElementException e) {
             throw new Exception("Estudiante no encontrado: " + e.getMessage(), e);
         } catch (Exception e) {
@@ -97,7 +95,7 @@ public class EstudianteServicio implements BaseServicios<Estudiante>{
         Sort sort = Sort.by(orden);
         List<Estudiante> estudiantes = estudianteRepository.findAll(sort);
         return estudiantes.stream()
-                .map(estudiante -> new EstudianteDTO(estudiante.getDocumento(), estudiante.getNombre(), estudiante.getApellido(), estudiante.getEdad()))
+                .map(estudiante -> new EstudianteDTO(estudiante.getDocumento(), estudiante.getNombre(), estudiante.getApellido(), estudiante.getEdad(), estudiante.getGenero(), estudiante.getCiudad_residencia()))
                 .collect(Collectors.toList());
     }
     //Obtener todos los estudiantes por genero
@@ -106,7 +104,7 @@ public class EstudianteServicio implements BaseServicios<Estudiante>{
         try {
             List<Estudiante> estudiantes = estudianteRepository.findByGenero(genero);
             return estudiantes.stream()
-                    .map(e -> new EstudianteDTO(e.getDocumento(), e.getNombre(), e.getApellido(), e.getEdad()))
+                    .map(e -> new EstudianteDTO(e.getDocumento(), e.getNombre(), e.getApellido(), e.getEdad(), e.getGenero(), e.getCiudad_residencia()))
                     .collect(Collectors.toList());
 
         }catch (NoSuchElementException e) {
@@ -116,4 +114,21 @@ public class EstudianteServicio implements BaseServicios<Estudiante>{
         }
     }
 
+    @Transactional(readOnly = true)
+    public List<EstudianteDTO> getEstudianteByCarreraFilterCiudad(String carrera, String ciudad) throws Exception {
+        try {
+            List<Estudiante> estudiantes = estudianteRepository.findByCarreraFilterCiudad(carrera, ciudad);
+            List<EstudianteDTO> estudianteDTOS = new ArrayList<>();
+            for (Estudiante estudiante : estudiantes) {
+                estudianteDTOS.add(new EstudianteDTO(estudiante.getDocumento(), estudiante.getNombre(), estudiante.getApellido(), estudiante.getEdad(), estudiante.getGenero(), estudiante.getCiudad_residencia()));
+            }
+
+            return estudianteDTOS;
+
+        }catch (NoSuchElementException e) {
+            throw new Exception("Estudiantes no encontrados: " + e.getMessage(), e);
+        } catch (Exception e) {
+            throw new Exception("Error al buscar estudiantes por carrera y filtrados por genero: " + e.getMessage(), e);
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.grupo30.tp3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -30,6 +31,7 @@ public class Estudiante {
     @Column(nullable = false)
     private String ciudad_residencia;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "estudiante",fetch = FetchType.LAZY)
     private List<Estudia> carreras;
 

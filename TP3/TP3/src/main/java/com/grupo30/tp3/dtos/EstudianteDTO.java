@@ -14,10 +14,16 @@ public class EstudianteDTO {
 
     private int edad;
 
-    public EstudianteDTO(long documento, String nombre, String apellido, int edad) {
+    private String genero;
+
+    private String ciudad;
+
+    public EstudianteDTO(long documento, String nombre, String apellido, int edad, String genero, String ciudad) {
         this.documento = documento;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
+        this.genero = genero;
+        this.ciudad = ciudad;
     }
 }

@@ -1,5 +1,6 @@
 package com.grupo30.tp3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,6 +21,7 @@ public class Carrera {
     @Column
     private int duracion;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "carrera", fetch = FetchType.LAZY)
     private List<Estudia> estudiantes = new ArrayList<>();
 

@@ -54,7 +54,7 @@ public class EstudianteControllerJpa {
         }
     }
 
-    /** aprovecho para D&V
+    /**
      * Endpoint para obtener la lista de estudiantes ordenada según un criterio específico.
      *
      * @param orden El criterio de ordenamiento (puede ser "nombre", "apellido" o "edad"). Si no se especifica, se usa "nombre" como valor por defecto.
@@ -88,10 +88,39 @@ public class EstudianteControllerJpa {
         }
     }
 
-    @GetMapping("/genero")
+    @GetMapping("/{genero}")
     public ResponseEntity<List<EstudianteDTO>> getEstudianteByGenero(@PathVariable String genero){
         try {
             List<EstudianteDTO> estudiantes = estudianteServicio.getEstudianteByGenero(genero);
+            if (estudiantes != null) {
+                return ResponseEntity.ok(estudiantes);
+            } else {
+                return ResponseEntity.status(404).body(null);
+            }
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(null);
+        }
+    }
+
+
+
+    /**
+     * Endpoint para obtener la lista de estudiantes inscriptos a una carrera y filtrados por la ciudad de recidencia.
+     *
+     * @param carrera Indica el nombre de la carrera en la que se va a buscar la lista de estudiantes.
+     * @param ciudad Indica la ciudad por la que se va a filtrar la lista de estudiantes.
+     *
+     * @return ResponseEntity que contiene una lista de objetos EstudianteDTO filtrados según el criterio dado.
+     * - Retorna una respuesta HTTP 200 (OK) si la consulta es exitosa.
+     * - Retorna una respuesta HTTP 400 (Bad Request) si el criterio de orden no es válido.
+     * - Retorna una respuesta HTTP 500 (Internal Server Error) en caso de un error inesperado.
+     */
+    @GetMapping("/{carrera}/{ciudad}")
+    public ResponseEntity<List<EstudianteDTO>> getEstudianteByCarreraFilterCiudad(@PathVariable String carrera, @PathVariable String ciudad) {
+        try {
+            List<EstudianteDTO> estudiantes = estudianteServicio.getEstudianteByCarreraFilterCiudad(carrera, ciudad);
             if (estudiantes != null) {
                 return ResponseEntity.ok(estudiantes);
             } else {

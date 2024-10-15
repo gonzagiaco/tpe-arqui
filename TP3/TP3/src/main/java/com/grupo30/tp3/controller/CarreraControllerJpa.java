@@ -16,10 +16,19 @@ public class CarreraControllerJpa {
     @Autowired
     private CarreraServicio carreraServicio;
 
+
+    /**
+     * Endpoint para obtener todas las carreras con estudiantes inscriptos.
+     * @return Se retorna una lista de carreras ordenadas por cantidad de inscriptos
+     * - Retorna una respuesta HTTP 200 (OK) si la consulta es exitosa.
+     * - Retorna una respuesta HTTP 400 (Bad Request) si el criterio de orden no es válido.
+     * - Retorna una respuesta HTTP 500 (Internal Server Error) en caso de un error inesperado.
+     */
     @GetMapping("")
     public ResponseEntity<?> findAll() {
+            System.out.println(carreraServicio.getCarrerasOrdenadas());
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(carreraServicio.findAll());
+            return ResponseEntity.status(HttpStatus.OK).body(carreraServicio.getCarrerasOrdenadas());
         } catch(Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor intente más tarde.\"}");
         }

@@ -1,11 +1,14 @@
 package com.grupo30.tp3.servicios;
 
+import com.grupo30.tp3.dtos.CarreraDTO;
 import com.grupo30.tp3.model.Carrera;
 import com.grupo30.tp3.model.Estudiante;
 import com.grupo30.tp3.repository.CarreraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,5 +66,17 @@ public class CarreraServicio implements BaseServicios<Carrera>{
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<CarreraDTO> getCarrerasOrdenadas(){
+        List<Object[]> carreras = carreraRepository.getCarrerasOrdenadas();
+        List<CarreraDTO> carrerasDTO = new ArrayList<>();
+        for (Object[] c : carreras) {
+            Carrera carr = (Carrera) c[0];
+            Long inscriptos = (Long) c[1];
+            carrerasDTO.add(new CarreraDTO(carr.getCarrera(), carr.getDuracion(), inscriptos));
+        }
+        return carrerasDTO;
     }
 }
