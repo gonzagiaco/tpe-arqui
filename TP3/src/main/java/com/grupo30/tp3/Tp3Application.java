@@ -13,24 +13,22 @@ import java.io.IOException;
 @SpringBootApplication(scanBasePackages = "com.grupo30.tp3")
 public class Tp3Application {
 
+    @Autowired
+    private CargaEstudiantes cargaEstudiantes;
+    @Autowired
+    private CargaCarreras cargaCarreras;
+    @Autowired
+    private CargaEstudianteCarrera cargaEstudianteCarrera;
+
     public static void main(String[] args) {
-        @Autowired
-        private CargaEstudiantes cargaEstudiantes;
-        @Autowired
-        private CargaCarreras cargaCarreras;
-        @Autowired
-        private CargaEstudianteCarrera cargaEstudianteCarrera;
+        SpringApplication.run(Tp3Application.class, args);
 
-        public static void main(String[] args) {
-            SpringApplication.run(Tp3Application.class, args);
+    }
 
-        }
-
-        @PostConstruct
-        public void init() throws IOException {
-            cargaEstudiantes.cargarDatosDesdeCSV();
-            cargaCarreras.cargarDatosDesdeCSV();
-            cargaEstudianteCarrera.cargarDatosDesdeCSV();
-        }
+    @PostConstruct
+    public void init() throws IOException {
+        cargaEstudiantes.cargarDatosDesdeCSV();
+        cargaCarreras.cargarDatosDesdeCSV();
+        cargaEstudianteCarrera.cargarDatosDesdeCSV();
     }
 }

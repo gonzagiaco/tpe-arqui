@@ -4,37 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd2b6497-077b-4779-b2fa-f009e97df53f" name="Changes" comment="Se agregó servicio de reportes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/Tp3Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/controller/CarreraControllerJpa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/controller/EstudianteControllerJpa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/csv/carreras.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/csv/estudianteCarrera.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/csv/estudiantes.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/dtos/CarreraDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/dtos/EstudianteDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/model/Carrera.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/model/Estudia.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/model/Estudiante.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/repository/CarreraRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/repository/EstudianteCarreraRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/repository/EstudianteRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/repository/RepoBase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/servicios/BaseServicios.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/servicios/CarreraServicio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/servicios/EstudianteServicio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/utils/CargaCarreras.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/utils/CargaEstudianteCarrera.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/java/com/grupo30/tp3/utils/CargaEstudiantes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3/src/test/java/com/grupo30/tp3/Tp3ApplicationTests.java" beforeDir="false" />
-    </list>
+    <list default="true" id="dd2b6497-077b-4779-b2fa-f009e97df53f" name="Changes" comment="Se agregó servicio de reportes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,7 +51,7 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/gonzagiaco/tpe-arqui.git",
-    "accountId": "be2b0db8-6b60-4587-b939-e8865f63d03d"
+    "accountId": "937e8c08-5fef-4fdb-8145-cba6fcc6a6ef"
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -96,23 +66,23 @@
     <option name="showLibraryContents" value="true" />
     <option name="sortKey" value="BY_TIME_DESCENDING" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/enzoj/IdeaProjects/tpe-arquii/TP3&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/fermi/IdeaProjects/tpe-arqui/TP1/src/main/java/org/example/Main.java&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/tpe-arqui/TP3",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/fermi/IdeaProjects/tpe-arqui/TP1/src/main/java/org/example/Main.java",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\fermi\IdeaProjects\tpe-arqui\TP2\src" />
@@ -140,8 +110,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.419" />
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.419" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
       </set>
     </attachedChunks>
   </component>
@@ -180,6 +150,7 @@
       <workItem from="1728678333134" duration="170000" />
       <workItem from="1728848348616" duration="220000" />
       <workItem from="1729013300430" duration="322000" />
+      <workItem from="1729015096205" duration="35000" />
     </task>
     <task id="LOCAL-00001" summary="Reimplementacion de MySQLDAOFactory y arreglo en el cierre de conexiones">
       <option name="closed" value="true" />
